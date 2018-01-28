@@ -1,0 +1,32 @@
+﻿<html lang='fr-FR'>
+	<head>
+		<title> Bienvenue sur ma page WEB !!! </title>
+		<meta name="Description" content="Description du site " >
+		<meta charset="utf-8" > 
+		<style>
+		
+			#contenu {width:960px; margin:0 auto; background-color:#FFFFFF;}
+			body {background: lightblue url('./image_icone.png') repeat;}
+			p {color:blue !important;} /*: 1000 (selecteur css marqué !important qui recoit une priorité de 1000) */
+			
+			.invisibile { visibility: hidden; }
+			
+			.NonAffiche { display: none; }
+			
+			.block1 { display: block; width: 40%;}
+			.inline1 { display: inline; width: 40%;}
+
+		</style>
+	</head>	
+
+	<body> 
+		<div id="contenu"> 
+			<p > Paragraphe1 : ...</p>
+			<p class='invisibile'> Paragraphe2 : ...</p>
+			<p class='invisibile'> Paragraphe3 : invisibile </p>
+			<p class='NonAffiche'> Paragraphe4 : ...</p>
+			<p class='NonAffiche'> Paragraphe5 : NonAffiche </p>
+			<p > Paragraphe6 : ...</p>
+		</div>
+	</body>
+</html>

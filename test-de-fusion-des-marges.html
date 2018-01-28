@@ -1,0 +1,136 @@
+﻿<!DOCtype html>
+<html lang='fr-FR'>
+	<head>
+		<title> Bienvenue sur ma page WEB !!! </title>
+		<meta name="Description" content="Description du site " >
+		<meta charset="utf-8" >  <!-- en html5 -->
+		
+		<style>
+			
+			header {  
+				width: 150px;   
+				height: 150px; 
+				margin: 30px;  
+				padding: 0px; 
+				border: 0px; 
+				background-color:blue; 
+			}
+
+			section { 
+				width: 150px;   
+				height: 150px; 
+				margin: 30px;  
+				padding: 0px; 
+				border: 0px; 
+				background-color:yellow; 
+			}
+			footer { 
+				width: 150px;   
+				height: 150px; 
+				background-color:green;
+			}
+			div { 
+				width: 150px;   
+				height: 150px; 
+				margin: 15px;  
+				padding: 0px; 
+				border: 0px; 
+				background-color:red;
+				
+					-moz-box-sizing: border-box;    // Pour Mozila
+					-webkit-box-sizing: border-box; //Pour Chrome
+					-ms-box-sizing: border-box; //Pour Internet Explore
+					-o-box-sizing: border-box; //Pour Opera
+					-khtml-box-sizing: border-box; //Pour khtml (kde)
+					
+					box-sizing: border-box; 
+			
+			}
+
+		</style>
+	</head>
+	<body>
+		 
+		  <header > This header   This header   This header   This header   This header  </header>
+		  <section> This section  This section  This section  This section  This section </section>
+		  <footer > This footer   This footer   This footer   This footer   This footer  </footer>
+		  <div >    This div      This div      This div      This div      This div     </div>
+		  
+		  
+			<p style="margin: 30px;">   paragraphe1 </p>
+			<div style="margin: 40px;"> Contenu1 </div>
+			
+			<p style="margin-bottom: 15px;">   paragraphe2 </p>
+			<div style="margin-top: 10px;"> Contenu2 </div>
+
+
+
+
+
+			FUSION DES MARGES ENTRE UN ÉLÉMENT PARENT ET ENFANT : <br/>
+			Remarque : Le retrait du div sera donc de 30 pixels, au lieu de 20 pixels.  <br/>
+			
+			<div style="margin:20px;">
+			
+				<p style="margin:40px;">   paragraphe3 </p>
+				
+			</div>
+			
+			
+			<div style="margin-bottom: 20px;">
+			
+				<p style="margin-top: 40px">   paragraphe4 </p>
+			</div>
+
+
+
+
+
+			BLOQUER la fusion des marges avec du texte : <br/>
+			Remarque : Le retrait du div sera donc de 20 pixels.  <br/>
+			
+			<div style="margin-bottom: 20px;">
+				Texte Texte Texte Texte Texte ...
+				<p style="margin-top: 40px">   paragraphe5 </p>
+			</div>
+			
+			<div style="margin: 20px;">
+				Texte Texte Texte Texte Texte ...
+				<p style="margin: 40px">   paragraphe6 </p>
+				Texte Texte Texte Texte Texte ...
+				<p style="margin: 40px">   paragraphe7 </p>
+			</div>
+
+
+
+
+
+			BLOQUER la fusion des marges avec la propriété CSS padding : <br/>
+			
+			<div style="margin: 20px; padding:1px; border: 1px solid red;">
+				<p style="margin: 40px">   paragraphe8 </p>
+			</div>
+
+
+
+
+
+			BLOQUER la fusion des marges avec la propriété CSS border : <br/>
+			
+			<div style="margin-bottom: 20px; border:1px; ">
+				<p style="margin-top: 40px">   paragraphe9 </p>
+			</div>
+
+
+
+
+
+			BLOQUER la fusion des marges avec la propriété CSS overflow : <br/>
+			Remarque : la propriété overflow et les valeurs auto ou hidden, empêche la fusion des marges.  <br/>
+			
+			<div style="margin-bottom: 20px; overflow: hidden;">
+				<p style="margin-top: 40px">   paragraphe10 </p>
+			</div>
+
+	</body>
+</html>

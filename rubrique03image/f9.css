@@ -1,0 +1,9 @@
+﻿
+header { background-color: lightblue; } 
+h1 { font-family:vivaldi;} 
+nav { border : 5px solid lightpink; } 
+
+a:link { color: purple; }
+a:hover { color: green; font-size:20px;}
+a:active { background-color: yellow; }
+a:visited { background-color: pink; color: red;}

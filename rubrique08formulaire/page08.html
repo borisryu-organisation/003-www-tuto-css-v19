@@ -1,0 +1,172 @@
+﻿<!DOCtype html>
+<html lang='fr-FR'>
+	<head>
+		<title> Bienvenue sur ma page WEB !!! </title>
+		<meta name="Description" content="Description du site " >
+		<meta charset="utf-8" >  <!-- en html5 -->
+		<link rel="icon" type="image/ico" href="./favicon.ico" >
+		<meta name="author" content="Boris, WebAgence" >
+		<meta name="signet:authors" content="Boris, WebAgence">
+		<meta name="robots" content="index,follow" >
+		<meta name="keywords" lang="en-us" content="word1, word2, word3"> <!-- for speakers of us english -->
+		<meta name="keywords" lang="fr-FR" content="mot1, mot2, mot3"> <!-- for speakers of french -->
+		<meta http-equiv="refresh" content="600">
+		
+		<link rel='stylesheet' type='text/css' href='../css/reset.css' />
+		<link rel='stylesheet' type='text/css' href='../css/eee.css' />
+				
+	</head>	
+
+	<body>  <!-- description : corps du document, affiche le conteneu de la page -->
+		<div id="contenu">  <!-- description : bloc permettant de centrer le contenu en css -->
+			<header> <h1>TITRE</h1> <h2>SOUS-TITRE</h2> </header>
+			
+			<nav> 
+				
+					<a href="../index.html">Accueil</a> |
+					<a href="../rubrique01texte/page01.html">Rubrique01</a> |
+					<a href="../rubrique02lien/page02.html">Rubrique02</a> |
+					<a href="../rubrique03image/page03.html">Rubrique03</a> |
+					<a href="../rubrique04audio/page04.html">Rubrique04</a> |
+					<a href="../rubrique05video/page05.html">Rubrique05</a> |
+					<a href="../rubrique06liste/page06.html">Rubrique06</a> |
+					<a href="../rubrique07tableau/page07.html">Rubrique07</a> |
+					<a href="./page08.html">Rubrique08</a>
+				
+			</nav>
+
+			<aside>  <a href="#">Lien</a> | <a href="#">Lien</a>  </aside>
+			
+			<section>
+				<article>
+					<header><h1> TITRE : PAGE </h1></header>
+					
+					
+					
+					
+					
+					
+					
+					
+			<form>
+				<fieldset> <legend>Informations personnelles</legend>
+				
+					<label for='idEmail'>Email :</label> <input id='idEmail' type='email' placeholder='lorem@mail.fr' > <br/>
+					
+					<label for='idmot'>Mot de passe :</label> <input id='idmot' type='password' placeholder='********'> <br/>
+					
+					<label for='idsexe'>Sexe :</label>
+					<select id='idsexe'>
+						<option value='Homme'>Homme</option>
+						<option value='Femme' selected>Femme</option>
+						<option value='NC'>NC</option>
+					</select>
+					<br/>
+					
+					<label for='iddate'>Date de naissance</label>      <input id='iddate' type='date' min='2000-01-01'> <br/>
+					
+				</fieldset>
+				
+				<fieldset> <legend>Préférences</legend>
+				
+					<span>Couleur favorite : </span> 
+					<input id='rouge' type='radio' name='Couleur' value='rouge' > <label for='rouge'>rouge</label>  
+					<input id='vert'  type='radio' name='Couleur' value='vert' > <label for='vert'>vert  </label>  
+					<input id='bleu'  type='radio' name='Couleur' value='bleu' > <label for='bleu'>bleu  </label>  <br/>
+					
+					<span >Centre d'interets</span> 
+					<input id='sport'        type='checkbox' value='sport'       >  <label for='sport'>sport</label>       
+					<input id='danse'        type='checkbox' value='danse' >  <label for='danse'>danse</label>       
+					<input id='musique'      type='checkbox' value='musique'     >  <label for='musique'>musique</label>       
+					<input id='informatique' type='checkbox' value='informatique'>  <label for='informatique'>informatique</label>       <br/>
+					
+				</fieldset>
+				
+				<fieldset> <legend>Commentaires</legend>
+				
+					<label for='message'>message : </label> <textarea id='message'></textarea>
+					
+				</fieldset>
+				
+					<input type='submit' value='Envoyer'>
+					
+			</form>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+			<form>
+				<fieldset> 
+					<legend>Information1</legend>
+					<label for="id1"> Nom </label>               <input id="id1" type="text"/> <br/>
+					<label for="id2"> Prénom </label>            <input id="id2" type="text" placeholder="Tapez ici ..."/><br/>
+					<label for="id3"> Mail </label>              <input id="id3" type="mail" placeholder="utilisateur@domaine.com" size="40"/> <br/>
+					<label for="id4"> Login </label>             <input id="id4" type="text" size="10" maxlength="20"/> <br/>
+					<label for="id5"> Mot de passe </label>      <input id="id5" type="password"/> <br/>
+					<label for="id6"> Date de naissance </label> <input id="id6" type="date"/><br/>
+					<label for="id7"> Couleur préférée </label>  <input id="id7" type="color"/><br/>
+				</fieldset>
+				
+				<fieldset> 
+					<legend>Information2</legend>
+					<label > Niveau culinaire :</label> <br/>
+						<input type="radio" name="Expert" value="Expert"/> Expert <br/>
+						<input type="radio" name="Expert" value="Intermédiaire"/> Intermédiaire<br/>
+						<input type="radio" name="Expert" value="Débutant" /> Débutant <br/>
+						<input type="radio" name="Expert" value="nc" checked /> non communiqué <br/>
+						
+					<label > Allergie : </label>
+						<input type="checkbox" name="Allergie" value="Lait"     /> Lait<br/>
+						<input type="checkbox" name="Allergie" value="Oeufs"    /> Oeufs<br/>
+						<input type="checkbox" name="Allergie" value="Arachide" /> Arachide<br/>
+						<input type="checkbox" name="Allergie" value="Glutten"  /> Glutten<br/>
+						<input type="checkbox" name="Allergie" value="Autres"   /> Autres<br/>
+						
+											
+					<label> Type de recette : </label>
+					<select name="Type de recette" size="1" >
+							<option value="Economique">économique</option>
+							<option value="Gastronomique">gastronomique</option>
+							<option value="Vapeur">Vapeur</option>
+							<option value="Repas de fête">Repas de fête</option>
+							<option value="Grand repas">grand repas</option>
+					</select>
+					<br/>
+					
+	
+					<label for="id20"> Commentaires : </label> <br/>
+					<textarea rows="7" cols="40" id="id20" name="commentaires2" >
+						Tapez ici votre commentaire ...
+					</textarea><br/>
+				
+						<input type="reset" value="Réinitialisation"/>
+						<input type="submit" value="Validation"/>
+				</fieldset>		
+				
+			</form>
+					
+					
+					<footer><h3> Nom de l'auteur,  Date </h3></footer>
+				</article>
+				
+			</section>
+			
+			<footer><p> Nom, Adresse, Code, Ville, Telephone, Mail </p></footer>
+		</div>
+
+	</body>
+</html>

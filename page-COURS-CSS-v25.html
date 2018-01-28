@@ -1,0 +1,3428 @@
+﻿<!DOCtype html>
+<html lang='fr-FR'>
+	<head>
+		<title> Bienvenue sur ma page WEB !!! </title>
+		<meta name="Description" content="Description du site " >
+		<meta charset="utf-8" >  <!-- en html5 -->
+		<link rel="icon" type="image/ico" href="./favicon.ico" >
+		<meta name="author" content="Boris, WebAgence" >
+		<meta name="signet:authors" content="Boris, WebAgence">
+		<meta name="robots" content="index,follow" >
+		<meta name="keywords" lang="en-us" content="word1, word2, word3"> <!-- for speakers of us english -->
+		<meta name="keywords" lang="en" content="word1, word2, word3"> <!-- for speakers of british english -->
+		<meta name="keywords" lang="fr" content="mot1, mot2, mot3"> <!-- for speakers of french -->
+		<meta http-equiv="refresh" content="300">
+		<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../css/fichier1.css" />
+		<!--[if lt IE ]> <link rel="stylesheet" type="text/css" href="../css/styleie.css" /> <![endif]-->
+		<!--[if lt IE 6]> <link rel="stylesheet" type="text/css" href="../css/styleie6.css" /> <![endif]-->
+		<!--[if lte IE 7]> <link rel="stylesheet" type="text/css" href="../css/styleie7.css" /> <![endif]-->
+		<!--[if gt IE 8]> <link rel="stylesheet" type="text/css" href="../css/styleie8.css" /> <![endif]-->
+		<!--[if gte IE 9]> <link rel="stylesheet" type="text/css" href="../css/styleie9.css" /> <![endif]-->
+	 </head> 
+	 <body> 
+	
+			<header><h1> TITRE : COURS CSS </h1></header>
+
+	
+
+		<h2> Feuilles de style en cascade </h2>
+		<p>
+			Le CSS (Cascading Style Sheet : Feuilles de Style en Cascade) est utilisé pour la mise en page et le design de documents WEB HTML.
+		</p>
+		<p> 
+			Les feuilles de style en cascade, généralement appelées CSS de l'anglais Cascading Style Sheets, forment un langage informatique qui décrit la présentation des documents HTML et XML. Les standards définissant CSS sont publiés par le World Wide Web Consortium (W3C). Introduit au milieu des années 1990, CSS devient couramment utilisé dans la conception de sites web et bien pris en charge par les navigateurs web dans les années 2000.
+		</p> 
+
+			
+		<h2> Origine </h2> 
+		<p> 
+			Le concept de feuille de style est présent dès l'origine du World Wide Web : le premier navigateur web (« WorldWideWeb », renommé par la suite « Nexus ») permet de mettre en forme les documents à l'aide de ce qui serait aujourd'hui considéré comme une « feuille de style utilisateur ». De même, les navigateurs Viola en 1992 et Harmony en 1993 recourent à un mécanisme similaire permettant de déterminer le rendu des polices de caractères, des couleurs ou de l'alignement du texte.
+
+			Il ne s'agit cependant pas de styles déterminés par l'auteur du document. HTML ne comportant pas non plus d'éléments de présentation dans ses premières années, une pression croissante s'exerce alors pour que les navigateurs permettent aux auteurs de déterminer eux-mêmes la présentation des pages web3, dans une démarche issue de la publication imprimée électronique. C'est dans ce contexte, en 1994 - 1995, que le tout nouveau Netscape Navigator introduit les premiers éléments HTML de présentation à l'initiative de Marc Andreessen, tandis qu'apparaissent concurremment les premières propositions de styles externesn. 1 : le « stylesheet proposal » de Pei Wei (créateur de Viola)4, les « Stylesheets for HTML » de Robert Raisch (O'Reilly)5, et enfin les «  Cascading HTML Style Sheets » (CHSS) d'Håkon Wium Lie6. L'apparition de CSS répond à une volonté de « proposer une alternative à l'évolution du HTML d'un langage de structuration vers un langage de présentation »7.
+
+			Une troisième voie de développement est également ouverte à la même époque : le langage de transformation DSSSL des documents SGML, élaboré par James Clark, suggère la possibilité d'un langage de styles qui ne soit pas seulement descriptif, et se rapproche d'un véritable langage de programmationn. 2. Cette voie est suivie par Netscape, qui propose en 1996 au W3C les « JavaScript-Based Style Sheets » (JSSS)8, implémentées par Netscape Navigator 4 en 1997.
+
+			Les origines des CSS sont donc liées à trois alternatives majeures :
+
+			HTML est-il un langage de structuration ou un langage mixte de mise en forme et de structuration ?
+			Les choix de présentation de l'auteur doivent-ils avoir la primauté sur ceux de l'utilisateur ?
+			La réponse aux besoins est-elle un langage de description de la mise en forme, ou un langage de transformation ?
+		</p> 
+		<p> 
+			Le public non averti parle parfois de HTM au lieu de HTML, 
+			HTM étant l’extension de nom de fichier tronquée à trois lettres, 
+			une limitation qu’on trouve sur d’anciens systèmes d’exploitation de Microsoft.
+
+		</p> 
+
+
+
+
+
+		<p> PLAN :
+				Style CSS interne : Style CSS en ligne ( dans la balise HTML ouvrante )
+				Style CSS interne : Style CSS de document ( <style> ... </style> )
+				Style CSS externe : Style CSS lier ( <link ... /> )
+				Style CSS externe : Style CSS importé ( @import(URL) )
+				attribut de style CSS : media (media query et responsive)
+				feuille de style CSS de reset
+				feuille de style CSS de hacking css pour du commentaire conditionnelle IE
+				modele de boite
+				fusion de marge
+				selecteur {propriété:valeur;}
+				selecteur *    <!-- possede 0 point(s) dans les priorités CSS -->
+				selecteur de balise HTML     <!-- possede 1 point(s) dans les priorités CSS -->
+				selecteur d'attribut HTML    <!-- possede 1 point(s) dans les priorités CSS -->
+				selecteur de classe : .motcle1 {propriété:valeur;}    <!-- possede 10 point(s) dans les priorités CSS -->
+				selecteur d'identificateur : #motcle2 {propriété:valeur;}  <!-- possede 100 point(s) dans les priorités CSS -->
+				selecteur avec vigule (regroupe de selecteur pour les memes propriétés)
+				selecteur avec espace (enfants directes et indirectes)
+				selecteur avec combinaison div#mot3 different de div #mot3
+				selecteur avec chevron (enfants directes uniquement)
+				selecteur avec tilde (frere directes et indirectes)
+				selecteur avec plus (frere directes uniquement)
+				selecteur avec Pseudo-classe
+				selecteur avec !important ajoute de 1000 points dans les priorités CSS
+				positionnement static
+				positionnement fixed
+				positionnement absolue
+				positionnement relative
+				positionnement float et clear
+				propriétés de style CSS pour le texte
+				propriétés de style CSS pour les listes
+				propriétés de style CSS pour les tableaux
+				propriétés de style CSS pour les blocs et bordures
+				propriétés de style CSS pour l'arrière-plan
+				propriétés de style CSS pour le positionnement
+				positionnement de BLOC pour un GABARIT
+				propriétés de style CSS pour les SPRITES
+				propriétés de style CSS pour les FONT AWESOME ICONS
+				Style CSS pour faire un menu déroulant		
+			
+		</p>
+		<!--
+		
+		Le but des pages HTML et des styles CSS :
+		
+			• Les pages HTML structure le contenu.
+			• Les fichiers CSS sont liés aux pages HTML afin de définir la mise en forme et améliorer compatibilité.
+
+
+
+
+
+		ANCÊTRE, PARENTS, ENFANTS, FRÈRES, SOEURS : 
+			
+			Comprendre l'imbrication des éléments (boites) les uns dans les autres est essentiel. 
+			Chaque document HTML est toujours composé de conteneurs. 
+			Ceux-ci peuvent être ancêtres, PARENTS, ENFANTS ou FRÈRES. 
+			Ces différents éléments composent une hiérarchie d'imbrications.
+			
+			• Un élément ANCÊTRE est un élément qui contient un élément ou une hiérarchie d'éléments
+			• Un bloc Parent est un élément contenant directement un autre bloc. 
+					Par exemple, un DIV contenant un paragraphe P. 
+					Attention : si ce paragraphe contient lui-même des éléments (ex: strong), 
+					DIV ne sera pas Parent de l'élément strong mais uniquement son ANCÊTRE. 
+					Le Parent est donc l'ANCÊTRE immédiat.
+			• Un bloc contenu directement dans un autre bloc est dit Enfant de cet élément. 
+					Par exemple, ici les éléments LI sont ENFANTS de leur conteneur UL.
+			• Les éléments ayant le même élément Parent sont appelés FRÈRES.
+
+
+
+
+
+			Le FLUX (FLOW): 
+			
+				La mise en place des différents éléments de la page se fait par défaut selon le Flux courant. 
+				Les éléments (balises) sont placés les uns après les autres dans le code HTML de la page. 
+				L'ordre dans lequel apparaissent les balises dans le code HTML sera l'ordre dans lequel ils seront affichés 
+				et apparaitront dans le document, c'est le Flux. Cela signifie que, par défaut, 
+				chaque élément est dépendant des éléments FRÈRES qui l'entourent.
+
+
+
+
+
+			
+ 
+
+			PIXEL : 
+				Le pixel, abrégé px, est une unité de surface permettant de définir la base d’une image numérique. 
+				Son nom provient de la locution anglaise « picture element », 
+				qui signifie « élément d’image » ou « point élémentaire ». 
+				Il n’a a priori pas de taille « réelle ».
+
+			POINT : 
+				Le point (Pica), abrégé pt, est une unité de longueur. 
+				Un point pica mesure 1/72e de pouce (1 pouce = 2,54 cm), 
+				c’est-à-dire environ 0,03528 cm, 
+				soit un peu plus d’un tiers de millimètre.
+
+			RÉSOLUTION : 
+				La résolution permet de donner une taille réelle à un pixel. 
+				Elle est souvent exprimée en DPI (Dot Per Inch : Point Par Pouce). 
+				Attention, dans cette unité, 
+				le point signifie pixel (et non point Pica, 
+				puisque par définition, le nombre de points Pica par pouce est toujours 72, 
+				tout comme le nombre de millimètres dans un centimètre est toujours 10).
+				Rappel : Un point pica mesure 1/72e de pouce (1 pouce = 2,54 cm)
+
+			DÉFINITION : 
+				La définition d’une image ou d’un écran est le nombre de pixels 
+				qui composent l’image ou que peut afficher un écran. 
+				Elle est souvent donnée sous la forme nombre de 
+				pixels horizontalement × nombre de pixels verticalement, 
+				par exemple 640×480.
+
+
+
+
+
+			
+ 
+
+			Les unités de longueur : 
+				em : hauteur de la police de caractère (a ne pas confondre avec <em>)
+				px : taille d'un pixel 
+				ex : hauteur du caractère x minuscule ('x')
+				cm : centimètres (1 cm = 10 mm)
+				mm : millimètres
+				in : inches (1 in = 2.54 cm)
+				pt : points (1 pt = 1/72 in)
+				pc : picas (1 pc = 12pt)
+				 % : Pourcentage
+				 
+				Inche (us) = pouce du roi (fr)
+				Foot  (us) = pied (fr)
+				
+				ppi (pixels per inch) = ppp (pixels par pouce) [écran, vidéoprojecteur]
+				dpi (Dot per inch)    = ppp (pixels par pouce) [scanneur, imprimante]
+				
+				1 pouce = 2.54 cm
+				1 pied = 12 pouces = 12 * 2.54 cm = 30.48 cm
+				1 pouce = 6 picas = 6 * 12 points = 72 points
+				1 picas = 12 points
+				
+				
+				
+			Les unités de longueurs relatives :
+				em : la valeur de 'font-size' pour la police concernée
+				ex : la valeur de 'x-height' pour la police concernée
+				px : une quantité de pixels, en fonction de l'appareil de visualisation. 
+				
+				
+				
+			Les unités de valeur : (voir viewport)
+				-
+				-
+				-
+
+
+		-->
+
+
+
+
+		<h3> 
+			Style CSS interne : Style CSS en ligne    ( dans la balise HTML ouvrante <body style="..."> )
+			Style CSS interne : Style CSS de document ( <head> <style> ... </style> </head> )
+			
+			Style CSS externe : Style CSS lier        ( <head> <link rel='' type='' href='' />          </head> )
+			Style CSS externe : Style CSS importé     ( <head> <style> @import url('...') </style> </head> ) 
+		<h3>
+
+
+
+
+
+		<h3> Style CSS interne : Style CSS en ligne ( dans la balise HTML ouvrante ) <h3>
+		<!-- Fichier HTML : 
+			
+			<balise1 style='PROPRIETE1:VALEUR;' > Texte </balise >
+			<balise2 style="PROPRIETE2:VALEUR;" > Texte </balise >
+			
+			<balise3 style='PROPRIETE3:VALEUR; PROPRIETE2:"valeur de la prop";' > Texte </balise >
+			<balise4 style="PROPRIETE4:VALEUR; PROPRIETE2:'valeur de la prop';" > Texte </balise >
+			
+			<balise5 style='PROPRIETE5:VALEUR; PROPRIETE2:'valeur de la prop';' > Texte </balise > //ERREUR de quote !!!!!!!!!!!!!
+			<balise6 style="PROPRIETE6:VALEUR; PROPRIETE2:"valeur de la prop";" > Texte </balise > //ERREUR de quote !!!!!!!!!!!!!
+			
+			Exemple : 
+				<!DOCType html>
+				<html> 
+					<head></head> 
+					<body style="background-color:blue; width:960px;"  bgcolor='red' > 
+						continue du texte 
+						<header  style="background-color:#11AA11; width:500px; height:300px;"> continue du texte </header>
+						<main style="background-color:#22AA55; width:600px; height:400px;"> continue du texte </main>
+						<footer  style="background-color:#33AA77; width:700px; height:200px;"> continue du texte </footer>
+					</body>	
+				</html>	
+			
+			Exemple : <h1 style=""> Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla </h1>
+			Exemple : <h1 style="color:#11AA77;"> continue du texte continue du texte continue du texte continue du texte </h1>
+			Exemple : <h2 style="color:#11AA77; text-align:center; font-family:verdana, arial, serif;"> continue du texte </h2>
+			Exemple : <h3 style="color:#11AA77; text-align:center; font-family:verdana, arial, serif;"> continue du texte </h3>
+			Exemple : <h4 style="color:#11AA77; font-size:12px; text-decoration:underline;"> continue du texte </h4>
+			Exemple : <h5 style="color:#11AA77; font-size:12px; text-decoration:none;"> continue du texte </h5>
+			Exemple : <h6 style="color:#11AA77; font-size:12px; text-decoration:underline;"> continue du texte </h6>
+			
+			Exemple : <h6 color='green' style="color:red; font-size:12px; text-decoration:underline;"> continue du texte </h6>
+			
+		 -->
+		 
+		 <!--
+			Quelques exemples de propriété CSS :
+			
+				background-color:#112233;
+				background-image:url('./images/image.png');
+				
+				background: #112233 url('./images/image.png') no-repeat fixed top left;
+				
+				width:100%;
+				height:500px;
+				
+				color : #ffffff;
+				font-size : 1em;
+				font-size : 12px;
+				font-family: "nom composé entre quote", verdana, arial, serif;
+				font-style : italic;
+				font-weight : bold;
+				text-decoration : none;
+				text-decoration : underline;
+				text-transform : uppercase;
+				text-transform : lowercase;
+				font-variant : small-caps;
+				font-variant : small-caps;
+				
+				font: style weight size family;
+				font: italic bold 12px/30px Georgia, serif;
+				
+				text-align : center;
+				text-indent : 100%;
+				line-height : 100%;
+				letter-spacing : 100%;
+				word-spacing : 100%;
+				
+				margin: 1px;                /* 1px de chaque cotés */
+				margin: 10px 20px;          /* la 1er val pr le Haut et bas : 10px,  la 2e val pr la droite et gauche 20px */
+				margin: 0px auto;           /* Centré à droite et à gauche */
+				margin: 1px 2px 3px;        /* la 1er val pr le Haut : 1px,  la 2e val pr la droite et gauche : 2px,  la 3e val pr le bas 3px */
+				margin: 1px 2px 3px 4px;    /* margin dans l'ordre : haut, droite, bas, gauche */
+				
+				margin-top: 1px;  
+				margin-left: 1px;  
+				margin-bottom: 1px;  
+				margin-right: 1px;  
+				
+				
+				/* padding : réglage des marges à l'intérieur des blocs.  */ 
+				padding: 1px;                /* 1px de chaque coté */
+				padding: 10px 20px;          /* la 1er val pr le Haut et bas : 10px,  la 2e val pr la droite et gauche 20px */
+				padding: 0px auto;           /* Centré à droite et à gauche */
+				padding: 1px 2px 3px;        /* la 1er val pr le Haut : 1px,  la 2e val pr la droite et gauche : 2px,  la 3e val pr le bas 3px */
+				padding: 1px 2px 3px 4px;    /* padding dans l'ordre : haut, droite, bas, gauche */
+				
+				padding-top: 1px;  
+				padding-left: 1px;  
+				padding-bottom: 1px;  
+				padding-right: 1px;  
+
+				/* border-width : largeur de la bordure.  */ 
+				border-width: 1px 2px 3px 4px;    /* bordure haut, droite, bas, gauche */
+
+				/* border-style : type de la bordure.  */ 
+				border-style: solid;
+
+				/* border-color : couleur de la bordure.  */ 
+				border-color: #ff0000;
+
+				/* border : affichage global d'une bordure.  */ 
+				border: 5px dotted green;         /* border: width style color; */
+
+				/* cursor : type de pointeur affiché pr la souris.  */ 
+				cursor: auto;
+				
+
+				
+				margin : top px  right px  bottom px  left px;
+				padding : top px  right px  bottom px  left px;
+				border :  size px style color ;
+
+				margin : 1px 2px 3px 4px;
+				padding : 5px 6px 7px 8px;
+				border : 2px solid red;
+			
+		 -->
+
+
+
+
+
+		<h3> Style CSS interne : Style CSS de document ( <head>   <style> ... </style>   </head> ) <h3>
+		<!-- Fichier HTML : 
+		
+		<html>
+			<head>
+				<meta /> 
+				<meta /> 
+				
+				
+				<style> 
+					
+					// Commentaire CSS sur une ligne 
+					
+					/* Commentaire CSS sur plusieurs lignes */
+					
+					/* 
+						Commentaire CSS
+						
+						Nom du projet :
+						Version :
+						Description :  
+						Nom de l'auteur : 
+						Date de creation : 
+						Nom du dernier modificateur : 
+						Date de modification : 
+						Commentaire : 
+
+					*/
+					
+					/*
+					
+					SELECTEUR1  {PROPRIETE1:VALEUR1;} 
+					SELECTEUR2  {PROPRIETE1:'VALEUR avec espace'; PROPRIETE2:"VALEUR avec espace";} 
+					SELECTEUR3  {
+									PROPRIETE1:VALEUR1; 
+									PROPRIETE2:'VALEUR avec espace';
+									PROPRIETE3:"VALEUR avec espace";
+									PROPRIETE4:VALEUR1, VALEUR2; 
+									PROPRIETE5:VALEUR3 VALEUR4;
+					} 
+
+					*/
+		
+					@charset "UTF-8";
+		
+					
+					*  {color:green;}   /* selecteur universel, priorite de 0 */
+					
+					body     { background-color:blue; background-image:url('./images/image.png'); }   /* selecteur balise */
+					header   { background-color:red; width:960px; }
+					nav      { background-color:blue; width:960px; }
+					aside    { background-color:blue; width:960px; }
+					section  { background-color:blue; width:960px; }
+					article  { background-color:blue; width:900px; }
+					footer   { background-color:blue;  width:960px; height:200px; }
+					nav      { background-color:blue; color:green; text-align: center;  font-size: 14px;}
+					
+					p {
+						color :blue; 
+						text-align :right; 
+						font-family :verdana,arial; 
+						font-size :12px; 
+						text-decoration:underline;
+					} 
+					
+					h1 {color:red; text-align: center;}   
+					h2 {color:red; text-align: center;}   
+					h3 {color:red; text-align: center;}   
+					h3 {color:blue; }    
+					h3 {text-align: center;}     
+					h3 {color:red; }      /* selecteur de balise prioritaire sur le color:blue; donc le style est color:red; text-align: center; */
+
+					h1, h2, h3 {color:red; text-align: center;}      /* selecteur de balise */
+					
+					/* 
+						h1 {color:red; text-align: center;}
+						h2 {color:red; text-align: center;}
+						h3 {color:red; text-align: center;}
+					*/
+					
+					html { font-size : 1em; line-height : 100%; }
+					body { font-size : 1em; line-height : 100%; }
+					html, body { font-size : 1em; line-height : 100%; }
+					
+					a:hover { color: green; }          /* Lien survolé ou ayant le focus */
+					a:active { background-color: yellow; }        /* Lien actif (état cliqué) */
+					a:visited { background-color: pink; color: red;}         /* Lien visité */
+					
+		
+					
+					/* ex : <p style=" color:#2277bb; font-family:verdana,arial; font-size:12px; "> continue du texte </p> */
+					
+					/*
+					Quelques exemples de propriété CSS :
+						background-color:#112233;
+						background-image:url('./images/image.png');
+						background-size: 150%;
+				
+						background: #112233 url('./images/image.png') no-repeat top left;
+				
+						width:100%;
+						height:500px;
+						
+						color : #ffffff;
+						font-size : 1em;
+						font-family:verdana,arial,serif;
+						font-style : italic;
+						font-weight : bold;
+						text-decoration : none;
+						text-decoration : underline;
+						text-transform : uppercase;
+						font-variant : small-caps;
+						
+						font: style weight size family;
+						font: italic bold 12px/30px Georgia, serif;
+						
+						text-align : center;
+						text-indent : 100%;
+						line-height : 100%;
+						letter-spacing : 100%;
+						word-spacing : 100%;
+						
+						margin: 1px;                /* 1px de chaque cotés */
+						
+						margin: 10px 20px;          /* la 1er val pr le Haut et bas : 10px,  la 2e val pr la droite et gauche 20px */
+						margin: 0px auto;           /* Centré à droite et à gauche */
+						
+						margin: 1px 2px 3px;        /* la 1er val pr le Haut : 1px,  la 2e val pr la droite et gauche : 2px,  la 3e val pr le bas 3px */
+						
+						margin: 1px 2px 3px 4px;    /* margin dans l'ordre : haut, droite, bas, gauche */
+						
+						margin-top: 1px;  
+						margin-left: 1px;  
+						margin-bottom: 1px;  
+						margin-right: 1px;  
+						
+						
+						/* padding : réglage des marges à l'intérieur des blocs.  */ 
+						padding: 1px;                /* 1px de chaque coté */
+						padding: 10px 20px;          /* la 1er val pr le Haut et bas : 10px,  la 2e val pr la droite et gauche 20px */
+						padding: 0px auto;           /* Centré à droite et à gauche */
+						padding: 1px 2px 3px;        /* la 1er val pr le Haut : 1px,  la 2e val pr la droite et gauche : 2px,  la 3e val pr le bas 3px */
+						padding: 1px 2px 3px 4px;    /* padding dans l'ordre : haut, droite, bas, gauche */
+						
+						padding-top: 1px;  
+						padding-left: 1px;  
+						padding-bottom: 1px;  
+						padding-right: 1px;  
+
+						/* border : affichage global d'une bordure.  */ 
+						border: 5px dotted green;         /* border: width style color; */
+
+						/* border-width : largeur de la bordure.  */ 
+						border-width: 1px 2px 3px 4px;    /* bordure haut, droite, bas, gauche */
+
+						/* border-style : type de la bordure.  */ 
+						border-style: solid;
+
+						/* border-color : couleur de la bordure.  */ 
+						border-color: #ff0000;
+
+						/* cursor : type de pointeur affiché pr la souris.  */ 
+						cursor: auto;
+						
+
+						
+						margin : top px  right px  bottom px  left px;
+						padding : top px  right px  bottom px  left px;
+						border :  size px style color ;
+
+						margin : 1px 2px 3px 4px;
+						padding : 5px 6px 7px 8px;
+						border : 2px solid red;
+			
+						
+					*/
+					
+				</style>
+				
+				<meta /> 
+				<meta /> 
+				
+			</head>
+			<body >
+				<h1> TITRE1 </h1>
+				<h2> TITRE2 </h2>
+				<p> Paragraphe </p>
+			</body >
+		</html>	
+		
+		 -->
+
+
+
+
+
+		<h3> Style CSS externe : Style CSS lier ( <link /> ) <h3>
+		<!-- Fichier HTML : 
+		
+		<html>
+			<head>
+				
+				<meta /> 
+				<meta /> 
+				
+				<link rel="" type="" href="" />
+				<link rel="" type="" href="" media=''/>
+				
+				<link rel="stylesheet" type="text/css" href="./reset.css" />
+				<link rel="stylesheet" type="text/css" href="../css_cuisine/f2.css" />
+				
+				<link rel="stylesheet" type="text/css" href="../f3.css" />
+				<link rel="stylesheet" type="text/css" href="http://www.dom1.fr/rep1/f4.css" media="all" />
+				<link rel="stylesheet" type="text/css" href="http://www.dom1.fr/rep1/f5.css" media="tv" />
+				<link rel="stylesheet" type="text/css" href="http://www.dom1.fr/rep1/f6.css" media="print" />
+				<link rel="stylesheet" type="text/css" href="./css/f7.css" media="braille" />
+				<link rel="stylesheet" type="text/css" href="./f8.css" media="projection, print, tv" />
+				
+				
+				<meta /> 
+				<meta /> 
+				
+			</head>
+			<body >
+				<h1 > TITRE1 </h1>
+			</body >
+		</html>	
+		
+		 -->
+
+		<!-- Fichier CSS ( avec extension .css) : 
+		
+		/* Commentaire css : ... */
+
+		/*
+
+		selecteur1 { propriete1:valeur1; } 
+		selecteur2 { propriete1:valeur1; propriete2:valeur1,valeur2; propriete3:valeur3 valeur4; } 
+		selecteur3 { 
+			propriete4:'valeur'; 
+			propriete5:'valeur avec espace'; 
+			propriete6:"valeur avec espace"; 
+		} 
+
+		*/
+		
+		/* Feuille de style CSS personnel */
+
+		body { background-color:blue;  background-image:url('./images/image.png'); }   /* selecteur balise */
+
+		header    { background-color:blue; }
+
+		nav       { background-color:blue; }
+
+		aside     { background-color:blue; }
+
+		section   { background-color:blue; }
+
+		article   { background-color:blue; }
+
+		footer   { 
+			background-color:blue;  
+			width:960px; height:200px; 
+		}
+
+		nav { 
+			background-color:blue; 
+			color:green; 
+			text-align: center;  
+			font-size: 14px;
+		} 
+
+		p {
+			font-family:verdana,arial; 
+			color:yellow; 
+			text-align: right; 
+			font-size: 12px;
+		} 
+
+		h1 {color:red; text-align: center;}   
+		h2 {color:red; text-align: center;}   
+		h3 {color:blue; }    
+		h3 {text-align: center;}     
+		h3 {color:red; }      /* selecteur de balise prioritaire sur le color:blue; */
+
+		h1, h2, h3 {color:red; text-align: center;}      /* selecteur de balise */
+
+		/* 
+			h1 {color:red; text-align: center;}
+			h2 {color:red; text-align: center;}
+			h3 {color:red; text-align: center;}
+		*/
+
+		
+		/*
+		Quelques exemples de propriétés :
+						background-color:#112233;
+						background-image:url('./images/image.png');
+						background-size: 150%;
+				
+						background: #112233 url('./images/image.png') no-repeat top left;
+				
+						width:100%;
+						height:500px;
+						
+						color : #ffffff;
+						font-size : 1em;
+						font-family:verdana,arial,serif;
+						font-style : italic;
+						font-weight : bold;
+						text-decoration : none;
+						text-decoration : underline;
+						text-transform : uppercase;
+						font-variant : small-caps;
+						text-align : center;
+						text-indent : 100%;
+						line-height : 100%;
+						letter-spacing : 100%;
+						word-spacing : 100%;
+						
+						margin: 1px;                /* 1px de chaque cotés */
+						
+						margin: 10px 20px;          /* la 1er val pr le Haut et bas : 10px,  la 2e val pr la droite et gauche 20px */
+						margin: 0px auto;           /* Centré à droite et à gauche */
+						
+						margin: 1px 2px 3px;        /* la 1er val pr le Haut : 1px,  la 2e val pr la droite et gauche : 2px,  la 3e val pr le bas 3px */
+						
+						margin: 1px 2px 3px 4px;    /* margin dans l'ordre : haut, droite, bas, gauche */
+						
+						margin-top: 1px;  
+						margin-left: 1px;  
+						margin-bottom: 1px;  
+						margin-right: 1px;  
+						
+						
+						/* padding : réglage des marges à l'intérieur des blocs.  */ 
+						padding: 1px;                /* 1px de chaque coté */
+						padding: 10px 20px;          /* la 1er val pr le Haut et bas : 10px,  la 2e val pr la droite et gauche 20px */
+						padding: 0px auto;           /* Centré à droite et à gauche */
+						padding: 1px 2px 3px;        /* la 1er val pr le Haut : 1px,  la 2e val pr la droite et gauche : 2px,  la 3e val pr le bas 3px */
+						padding: 1px 2px 3px 4px;    /* padding dans l'ordre : haut, droite, bas, gauche */
+						
+						padding-top: 1px;  
+						padding-left: 1px;  
+						padding-bottom: 1px;  
+						padding-right: 1px;  
+
+						/* border : affichage global d'une bordure.  */ 
+						border: 5px dotted green;         /* border: width style color; */
+
+						/* border-width : largeur de la bordure.  */ 
+						border-width: 1px     /* bordure haut, droite, bas, gauche */
+
+						/* border-style : type de la bordure.  */ 
+						border-style: solid;
+
+						/* border-color : couleur de la bordure.  */ 
+						border-color: #ff0000;
+
+						/* cursor : type de pointeur affiché pr la souris.  */ 
+						cursor: auto;
+						
+
+						
+						margin : top px  right px  bottom px  left px;
+						padding : top px  right px  bottom px  left px;
+						border :  size px style color ;
+
+						margin : 1px 2px 3px 4px;
+						padding : 5px 6px 7px 8px;
+						border : 2px solid red;
+						
+		*/
+		
+		 -->
+
+
+
+
+
+		<h3> Style CSS externe : Style CSS importé ( @import url('URL') ) <h3>
+		<!-- Fichier HTML : 
+		
+		<html>
+			<head>
+				<style> 
+					@import url("./fichier0reset.css");     /* ATTENTION : Pas d espace entre url et les parenthese */
+					@import url("../style1.css");   /* ATTENTION : Pas d espace entre url et les parenthese */
+					@import url("../css/fileprint.css") print;
+					@import url("http://www.dom1.fr/rep1/style3.css") projection, tv;
+				</style> 
+			</head>
+			<body >
+				<h1> TITRE1 </h1>
+			</body >
+		</html>	
+		
+		 -->
+
+		 
+		 
+		 
+		<!-- Fichier CSS ( avec extension .css) : 
+		
+		
+		/* Feuille de style CSS personnel */
+
+		body { background-color:blue;  background-image:url('./images/image.png'); }   /* selecteur balise */
+
+		header    { background-color:blue; }
+
+		nav       { background-color:blue; }
+
+		aside     { background-color:blue; }
+
+		section   { background-color:blue; }
+
+		article   { background-color:blue; }
+
+		footer   { 
+			background-color:blue;  
+			width:960px; height:200px; 
+		}
+
+		nav { 
+			background-color:blue; 
+			color:green; 
+			text-align: center;  
+			font-size: 14px;
+		} 
+
+		p {
+			font-family:verdana,arial; 
+			color:yellow; 
+			text-align: right; 
+			font-size: 12px;
+		} 
+
+		h1 {color:red; text-align: center;}   
+		h2 {color:red; text-align: center;}   
+		h3 {color:blue; }    
+		h3 {text-align: center;}     
+		h3 {color:red; }      /* selecteur de balise prioritaire sur le color:blue; */
+
+		h1, h2, h3 {color:red; text-align: center;}      /* selecteur de balise */
+
+		/* 
+			h1 {color:red; text-align: center;}
+			h2 {color:red; text-align: center;}
+			h3 {color:red; text-align: center;}
+		*/
+		
+		
+		
+		/*
+		Quelques exemples de propriété :
+						background-color:#112233;
+						background-image:url('./images/image.png');
+						background-size: 150%;
+				
+						background: #112233 url('./images/image.png') no-repeat top left;
+				
+						width:100%;
+						height:500px;
+						
+						color : #ffffff;
+						font-size : 1em;
+						font-family:verdana,arial,serif;
+						font-style : italic;
+						font-weight : bold;
+						text-decoration : none;
+						text-decoration : underline;
+						text-transform : uppercase;
+						font-variant : small-caps;
+						text-align : center;
+						text-indent : 100%;
+						line-height : 100%;
+						letter-spacing : 100%;
+						word-spacing : 100%;
+						
+						margin: 1px;                /* 1px de chaque cotés */
+						
+						margin: 10px 20px;          /* la 1er val pr le Haut et bas : 10px,  la 2e val pr la droite et gauche 20px */
+						margin: 0px auto;           /* Centré à droite et à gauche */
+						
+						margin: 1px 2px 3px;        /* la 1er val pr le Haut : 1px,  la 2e val pr la droite et gauche : 2px,  la 3e val pr le bas 3px */
+						
+						margin: 1px 2px 3px 4px;    /* margin dans l'ordre : haut, droite, bas, gauche */
+						
+						margin-top: 1px;  
+						margin-left: 1px;  
+						margin-bottom: 1px;  
+						margin-right: 1px;  
+						
+						
+						/* padding : réglage des marges à l'intérieur des blocs.  */ 
+						padding: 1px;                /* 1px de chaque coté */
+						padding: 10px 20px;           /* la 1er val pr le Haut et bas : 10px,  la 2e val pr la droite et gauche 20px */
+						padding: 0px auto;           /* Centré à droite et à gauche */
+						padding: 1px 2px 3px;        /* la 1er val pr le Haut : 1px,  la 2e val pr la droite et gauche : 2px,  la 3e val pr le bas 3px */
+						padding: 1px 2px 3px 4px;    /* padding dans l'ordre : haut, droite, bas, gauche */
+						
+						padding-top: 1px;  
+						padding-left: 1px;  
+						padding-bottom: 1px;  
+						padding-right: 1px;  
+
+						/* border : affichage global d'une bordure.  */ 
+						border: 5px dotted green;         /* border: width style color; */
+
+						/* border-width : largeur de la bordure.  */ 
+						border-width: 1px 2px 3px 4px;    /* bordure haut, droite, bas, gauche */
+
+						/* border-style : type de la bordure.  */ 
+						border-style: solid;
+
+						/* border-color : couleur de la bordure.  */ 
+						border-color: #ff0000;
+
+						/* cursor : type de pointeur affiché pr la souris.  */ 
+						cursor: auto;
+						
+
+						
+						margin : top px  right px  bottom px  left px;
+						padding : top px  right px  bottom px  left px;
+						border :  size px style color ;
+
+						margin : 1px 2px 3px 4px;
+						padding : 5px 6px 7px 8px;
+						border : 2px solid red;
+						
+		*/
+		
+		
+				
+		 -->
+
+
+
+
+
+		<h3> attribut de style CSS : media (media query et responsive) <h3>
+		<!--
+		
+			all :          Tous les types de média sont concernés.
+			braille :      Concerne les médias tactiles, exemple clavier braille.
+			aural :        Concerne tous les médias liés au son.
+			tty :          Destiné pour les médias télétypes ou équivalents.
+			screen :       Concerne les écrans d'ordinateurs (par défaut).
+			embossed :     Destiné pour les documents imprimés en braille.
+			tv :           Destiné à un affichage sur un téléviseur ou équivalent.
+			projection :   Concerne la projection de présentation assistée par ordinateur.
+			handheld :     Concerne les dispositifs ayant des petits écrans, monochrome et d'une largeur de bande limitée.
+			print :        Concerne le matériel de publication assistée par ordinateur et le mode de prévisualisation avant impression.
+			
+			Exemple1 :
+				<link rel="stylesheet" type="text/css" href="./style1.css" />
+				<link rel="stylesheet" type="text/css" href="./style2.css" media="all" />
+				<link rel="stylesheet" type="text/css" href="./style3.css" media="braille" />
+				<link rel="stylesheet" type="text/css" href="./style4.css" media="print, embossed" />
+				<link rel="stylesheet" type="text/css" href="./style5.css" media="screen, tv, projection" />
+				
+				<style> @import url("../css/fileprint.css") print; </style>
+				<style> @import url("http://www.dom1.fr/rep1/style3.css") projection, tv; </style>
+				
+				
+				
+			Exemple2 (media query et responsive) :
+			
+			
+			<html>
+				<head>
+					<style> 
+					
+						/* ATTENTION : ne pas confondre avec (min-device-width et min-width) ou (max-device-width et  max-width) */
+						
+						@media all and (min-width : 480px) and (max-width : 799px) { body { background-color:blue; } }
+						
+						
+						@media all 
+						and (min-width : 800px) 
+						and (max-width : 1023px) { 
+							body { background-color:red; } 
+						}
+						
+						
+						@media all 
+						and (min-width : 1024px) 
+						and (max-width : 2048px) { 
+							body { background-color:yellow; } 
+						}
+						
+					</style>
+				</head>
+				<body>
+					  <div class="box1">This div1</div>
+					  <div class="box2">This div2</div>
+
+				</body>
+			</html>
+			
+			
+			
+			
+			
+			/* Smartphones (portrait and landscape) ----------- */
+			@media tv 
+			and (min-width : 1320px) 
+			and (max-width : 1480px) {
+						SELECTEUR1  {PROPRIETE1:VALEUR1;} 
+
+			}
+			
+			@media tv 
+			and (min-device-width : 2320px) 
+			and (max-device-width : 2480px) {
+				/* Styles */
+			}
+			
+			@media screen 
+			and (min-width : 320px) 
+			and (max-width : 480px) {
+				/* Styles */
+			}
+
+			/* Smartphones (landscape) ----------- */
+			@media screen 
+			and (min-width : 321px) {
+				/* Styles */
+			}
+
+			/* Smartphones (portrait) ----------- */
+			@media only screen 
+			and (max-width : 320px) {
+				/* Styles */
+			}
+
+			/* iPads (portrait and landscape) ----------- */
+			@media only screen 
+			and (min-device-width : 768px) 
+			and (max-device-width : 1024px) {
+				/* Styles */
+			}
+
+
+			/* Desktops and laptops ----------- */
+			@media only screen 
+			and (min-width : 1224px) {
+				/* Styles */
+			}
+
+			/* Large screens ----------- */
+			@media only screen 
+			and (min-width : 1824px) {
+				/* Styles */
+			}
+		 -->
+
+
+
+
+
+		<h3> feuille de style CSS de reset <h3>
+		
+		<!-- le reset CSS doit etre placé en premiere position avant les autres styles CSS -->
+		
+		<!-- Exemple : 
+		
+			html, body, div, span, applet, object, iframe,
+			h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+			a, abbr, acronym, address, big, cite, code,
+			del, dfn, em, img, ins, kbd, q, s, samp,
+			small, strike, strong, sub, sup, tt, var,
+			b, u, i, center, dl, dt, dd, ol, ul, li,
+			fieldset, form, label, legend,
+			table, caption, tbody, tfoot, thead, tr, th, td,
+			article, aside, canvas, details, figcaption, figure, 
+			footer, header, hgroup, menu, nav, section, summary,
+			time, mark, audio, video {
+				margin: 0; padding: 0;
+				border: 0; outline: 0;
+				font-size: 100%;
+				font: inherit;
+				vertical-align: baseline;
+			}
+			body   { line-height: 1;}
+			ol, ul { list-style: none;}
+
+		 -->
+
+
+
+
+
+		<h3> feuille de style CSS de hacking css pour du commentaire conditionnelle IE <h3>
+		
+		
+		<html>
+			<head>
+				<link rel="stylesheet" type="text/css" href="../css/reset.css" >
+				<link rel="stylesheet" type="text/css" href="../css/fichier1.css" >
+				
+				<!--[if IE ]> h1 {color:red;} <![endif] -->
+				<!--[if IE ]> <link type="text/css" rel="stylesheet" href="./styleeqie.css" /> <![endif]-->
+				<!--[if IE 6]> <link type="text/css" rel="stylesheet" href="./styleeqie6.css" /> <![endif]-->
+				<!--[if gt  IE 7]> <link type="text/css" rel="stylesheet" href="./stylegtie7.css" />  <![endif]-->
+				<!--[if gte IE 8]> <link type="text/css" rel="stylesheet" href="./stylegteie8.css" />  <![endif]-->
+				<!--[if lt  IE 9]> <link type="text/css" rel="stylesheet" href="./styleltie9.css" />  <![endif]-->
+				
+				<!--[if lte IE 8]> <style> header, hgroup, nav, section, article, aside, footer { display: block;} </style> <![endif]-->
+				<!--[if lt IE 9]> <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+				
+				<!-- lt  : less than  -->
+				<!-- lte : less than or equal  -->
+				<!-- gt  : great than  -->
+				<!-- gte : great than or equal  -->
+				
+				<!--  !  : not  -->
+				<!-- ( ) : Subexpression  -->
+				<!--  &  : and  -->
+				<!--  |  : or  -->
+				
+				
+				<!--
+				
+				Exemple de Commentaire conditionnelle IE :
+				
+				!   : L'opérateur NOT.
+				exemple : [si! IE]  Il est placé juste en face de la fonction, l'exploitant ou sous-expression d'inverser le sens de l'expression booléenne.
+				
+				LT    : L'opérateur inférieur.
+				exemple : [si lt IE 5.5] Renvoie true si le premier argument est inférieur au second argument.
+				
+				LTE    : L'opérateur moins ou égal.
+				exemple : [si lte IE 6] Renvoie true si le premier argument est inférieur ou égal au second argument.
+				
+				gt    : L'opérateur supérieur. 
+				exemple : [si gt IE 5] Renvoie true si le premier argument est supérieure à la deuxième argument.
+				
+				gîte    : L'opérateur supérieur à ou égal. 
+				exemple : [if gte IE 7] Renvoie true si le premier argument est supérieur ou égal au second argument.
+				
+				()    : opérateurs de sous-expression. 
+				exemple : [If! (IE 7)] Utilisé en conjonction avec des opérateurs booléens pour créer des expressions plus complexes.
+				
+				&    : L'opérateur AND. 
+				exemple : [If (gt IE 5) et (lt IE 7)] Renvoie true si tous les sous-expressions évaluer à true
+				
+				|    : L'opérateur OR. 
+				exemple : [If (IE 6) | (IE 7)] Retourne vrai si l'un des sous-expressions évalue à true.
+
+				-->
+				
+			</head>
+			<body>
+				<header> <h1> TITRE </h1> </header>
+			</body>
+		</html>
+
+		<h3> Prefixe proprietaires et temporaires pour la compatibilité HTML5 <h3>
+		<!--
+		
+		-moz-       //Pour Mozila
+		-webkit-    //Pour Chrome et safari
+		-ms-        //Pour Internet Explore
+		-o-         //Pour Opera
+		-xv-        //Pour Opera auditif
+		-khtml-     //Pour khtml (kde)
+		
+		Exemple1 :
+		
+		-moz-color:red;          //Pour Mozila
+		-webkit-color:red;       //Pour Chrome
+		-ms-color:red;           //Pour Internet Explore
+		-o-color:red;            //Pour Opera
+		-xv-color:red;           //Pour Opera auditif
+		-khtml-color:red;        //Pour khtml (kde)
+		
+		color:red;               //Pour tous les autres navigateurs qui supportent cette propriete css
+		
+		
+		Exemple2 :
+		
+				div {
+						width:960px;
+						height:800px;
+						
+						-moz-box-sizing: border-box;    // Pour Mozila
+						-webkit-box-sizing: border-box; //Pour Chrome
+						-ms-box-sizing: border-box; //Pour Internet Explore
+						-o-box-sizing: border-box; //Pour Opera
+						-xv-box-sizing: border-box; //Pour Opera auditif
+						-khtml-box-sizing: border-box; //Pour khtml (kde)
+						
+						box-sizing: border-box; 
+				
+					}
+				
+
+		
+		-->
+
+
+
+
+
+		<h3> modele de boite (BOX Model) <h3>
+		<!--
+			Taille totale d'un BLOC  =  (width + height)  + (padding * 2)             + (border * 2)
+			largeur totale d'un BLOC = largeur (width)    + marges intérnes (padding) + bordures (border)
+			hauteur totale d'un BLOC = hauteur (height)   + marges intérnes (padding) + bordures (border)
+			
+			ATTENTION : LA HAUTEUR ET LA LARGEUR S'ADDITIONNENT AU PADDING : (WIDTH + HEIGHT + PADDING)
+			
+			La propriété « box-sizing » : 
+				En effet en utilisant box-sizing avec la valeur border-box les marges intérieures ainsi que les bordures 
+				seront incluses dans la largeur de votre élément: 
+				
+			box-sizing = (width + height)  + (padding * 2)      + (border * 2)
+			
+			Taille totale d'un BLOC =  box-sizing + (margin * 2) 
+			
+			div {
+				width: 500px;   height: 200px;
+				
+				padding: 0 50px; /* le padding s'additionne à la taille du bloc */
+				margin: 50px;
+				border-color:red;
+				border-left:solid 50px; /* le border s'additionne à la taille du bloc */
+				border-right:solid 50px; /* le border s'additionne à la taille du bloc */
+				
+				-moz-box-sizing: border-box;    // Pour Mozila
+				-webkit-box-sizing: border-box; //Pour Chrome
+				-ms-box-sizing: border-box; //Pour Internet Explore
+				-o-box-sizing: border-box; //Pour Opera
+				-khtml-box-sizing: border-box; //Pour khtml (kde)
+				
+				box-sizing: border-box; 
+				
+				background-color: yellow;    
+				
+			}
+
+		 -->
+
+
+
+
+
+		<h3> fusion de marge <h3>
+		<!--
+			La fusion des marges (Collapsing Margins) : 
+
+			Elle ne concerne que les marges verticales (margin-top et margin-bottom) des éléments HTML de type bloc. 
+			
+			Ces règles s'appliquent même lorsque les marges sont nulles (margin: 0px;) 
+			(egal à margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; )
+
+			Elle fusionne la marge inférieure du premier bloc avec la marge supérieure du deuxième qui le suit pour ne conserver que la plus grande des deux.
+			
+			
+			
+			<p style="margin: 30px;">   paragraphe1 </p>
+			<div style="margin: 40px;"> Contenu1 </div>
+			
+			<p style="margin-bottom: 15px;">   paragraphe2 </p>
+			<div style="margin-top: 10px;"> Contenu2 </div>
+
+
+
+
+
+			FUSION DES MARGES ENTRE UN ÉLÉMENT PARENT ET ENFANT : <br/>
+			Remarque : Le retrait du div sera donc de 30 pixels, au lieu de 20 pixels.  <br/>
+			
+			<div style="margin:20px;">
+			
+				<p style="margin:40px;">   paragraphe3 </p>
+				
+			</div>
+			
+			
+			<div style="margin-bottom: 20px;">
+			
+				<p style="margin-top: 40px">   paragraphe4 </p>
+			</div>
+
+
+
+
+
+			BLOQUER la fusion des marges avec du texte : <br/>
+			Remarque : Le retrait du div sera donc de 20 pixels.  <br/>
+			
+			<div style="margin-bottom: 20px;">
+				Texte Texte Texte Texte Texte ...
+				<p style="margin-top: 40px">   paragraphe5 </p>
+			</div>
+			
+			<div style="margin: 20px;">
+				Texte Texte Texte Texte Texte ...
+				<p style="margin: 40px">   paragraphe6 </p>
+				Texte Texte Texte Texte Texte ...
+				<p style="margin: 40px">   paragraphe7 </p>
+			</div>
+
+
+
+
+
+			BLOQUER la fusion des marges avec la propriété CSS padding : <br/>
+			
+			<div style="margin: 20px; padding:1px; border: 1px solid red;">
+				<p style="margin: 40px">   paragraphe8 </p>
+			</div>
+
+
+
+
+
+			BLOQUER la fusion des marges avec la propriété CSS border : <br/>
+			
+			<div style="margin-bottom: 20px; border:1px; ">
+				<p style="margin-top: 40px">   paragraphe9 </p>
+			</div>
+
+
+
+
+
+			BLOQUER la fusion des marges avec la propriété CSS overflow : <br/>
+			Remarque : la propriété overflow et les valeurs auto ou hidden, empêche la fusion des marges.  <br/>
+			
+			<div style="margin-bottom: 20px; overflow: hidden;">
+				<p style="margin-top: 40px">   paragraphe10 </p>
+			</div>
+
+
+
+
+
+			ATTENTION : Les marges des blocs en position FLOAT et de toutes autres blocs ne fusionnent jamais, 
+			comme les marges entre des blocs en position ABSOLUTE et RELATIVE.
+			
+		 -->
+
+
+
+
+
+		<h3> Pour CENTRER votre page dans body <h3>
+		<!-- Fichier CSS ( avec extension .css) : 
+		
+			body           { width:960px; margin: 0 auto; }
+			div            { width:960px; margin: 0 auto; }
+			#ID_contenu    { width:960px; margin: 0 auto; }
+			.CLASS_contenu { width:960px; margin: 0 auto; }
+			
+			header  { width:960px; margin: 0 auto; }
+			nav     { width:960px; margin: 0 auto; }
+			section { width:960px; margin: 0 auto; }
+			article { width:960px; margin: 0 auto; }
+			footer  { width:960px; margin: 0 auto; }
+			
+			#Id-pour-centrer-horrizontalement0 { width:960px; margin: 0 auto; }
+			.Class-pour-centrer-horrizontalement0 { width:960px; margin: 0 auto; }
+		
+			#Id-pour-centrer-horrizontalement1 { width:960px; padding: 0 auto; }
+			
+			#Id-pour-centrer-horrizontalement2 { display:inline; text-align:center; }
+			#Id-pour-centrer-horrizontalement2 { display:inline-block; text-align:center; }
+			#Id-pour-centrer-horrizontalement3 { display:inline-block; align-content:center; }
+			#Id-pour-centrer-horrizontalement4 { align-items:center; }
+			#Id-pour-centrer-horrizontalement5 { align-self:center; }
+			#Id-pour-centrer-horrizontalement5 { justify-content:center; }
+						
+			#Id-pour-centrer-vertical1 {vertical-align:text-top;}
+			#Id-pour-centrer-vertical1 {vertical-align:text-middle;}
+			#Id-pour-centrer-vertical1 {vertical-align:text-bottom;}
+			
+			
+		 -->
+			
+		<!-- Fichier HTML : 
+			
+			<html>
+				<head>
+					...
+					...
+					...
+				</head>
+				<body >
+					<div id="Id-pour-centrer-horrizontalement0">
+						<h1> TITRE1 </h1>
+						...
+						...
+						...
+					</div>
+				</body >
+			</html>	
+		
+		 -->
+
+		<h3> selecteur {propriété:valeur;} <h3>
+		<!--
+			sélecteur1 { propriété1: valeur1;}
+			
+			sélecteur2 {
+				propriété1: valeur1;
+				propriété2: valeur2, valeur3;
+				propriété3: valeur4 valeur5;
+				propriété4: 'valeur nom composé';
+				propriété5: "valeur mot composé";
+			}
+			
+			Expliquons:
+				Chaque règle CSS appliquent des styles à une ou plusieurs balises HTML,
+		 -->
+		 
+		 
+		<!-- Priorité :  
+						 Balise HTML enfant > Balise HTML parent
+		      Balise HTML enfant + attribut > Balise HTML parent + attribut
+										CSS > Balise HTML + attribut
+		           Balise HTML enfant + CSS > Balise HTML parent + CSS
+		
+				   Systeme de priorité CSS : 0, 1, 10, 100, 1000 = à additionner éventuellement
+		 -->
+
+		 
+		 
+		<h3> selecteur * <h3>
+		<!--
+			Sélecteur universel : *
+			Permet de sélectionner toutes les balises, sans exception.
+			Priorité css de : 0 point
+			
+			exemple :   * { font-size: 14px; color:green; }
+			
+		 -->
+
+
+
+
+
+		<h3> selecteur de balise HTML <h3>
+		<!--
+			Sélecteur de types : balise
+			Indiquer le nom d'une balise permet d'appliquer la règle CSS à un seul type de balise HTML. 
+			Priorité css de : 1 point
+			
+			exemple :   
+			
+				body     {  background-color: cyan; } 
+				body     {  background-image: url("./image1.jpg"); } 
+				body     {  background: red url('./images/fond.png') repeat 100px 200px ; } 
+				body     {  background: red url('http://www.dom.fr/images/fond.png') no-repeat top left ; } 
+				
+				h1       {  color: blue; font-size: 24px; font-weight: bold; text-align:center; } 
+				h2       {  color: blue; font-size: 22px; font-weight: bold; text-align:center; text-decoration:none; } 
+				h3       {  color: blue; font-size: 20px; font-weight: bold; text-align:center; text-decoration:underline; } 
+				h4       {  color: blue; font-size: 18px; font-weight: bold; text-align:center; text-decoration:underline; } 
+				h5       {  color: blue; font-size: 16px; font-weight: bold; text-align:center; text-decoration:underline; } 
+				h6       {  color: blue; font-size: 14px; font-weight: bold; text-align:center; text-decoration:underline; } 
+				
+				p        {  color: blue; font-size: 12px; font-style: normal; text-align:justify; font-family: "Times New Roman", Times, arial, serif; } 
+
+				strong   {  color: blue; font-size: 14px; font-weight: bold;} 
+				b        {  color: blue; font-size: 14px; font-weight: bold;} 
+				big      {  color: blue; font-size: 14px; font-weight: bold;} 
+
+				em       {  color: blue; font-size: 12px; font-style: italic;} 
+				i        {  color: blue; font-size: 12px; font-style: italic;} 
+
+				div      {  background-image: url("./image1.jpg"); color: blue; font-size: 12px; } 
+				span     {  color: blue; font-size: 12px; } 
+				br       {  color: blue; font-size: 12px; } 
+
+				header   {  color: blue; font-size: 12px; text-align:justify; font-family: vivaldi, Helvetica, fantasy, serif; } 
+				hgroup   {  color: blue; font-size: 12px; text-align:justify; font-family: vivaldi, Helvetica, fantasy, serif; } 
+				nav      {  color: blue; font-size: 12px; text-align:justify; font-family: vivaldi, Helvetica, fantasy, serif; } 
+				section  {  color: blue; font-size: 12px; text-align:justify; font-family: vivaldi, Helvetica, fantasy, serif; } 
+				article  {  color: blue; font-size: 12px; text-align:justify; font-family: vivaldi, Helvetica, fantasy, serif; } 
+				aside    {  color: blue; font-size: 12px; text-align:justify; font-family: vivaldi, Helvetica, fantasy, serif; } 
+				footer   {  color: blue; font-size: 12px; text-align:justify; font-family: vivaldi, Helvetica, fantasy, serif; } 
+
+				a        {  color: blue; font-size: 12px; font-style: normal; text-decoration:none; font-family: Courier, sans-serif; } 
+
+				img      {  width:200px; height:200px; } 
+
+				dl       {  color: blue; font-size: 12px; } 
+				dt       {  color: blue; font-size: 12px; } 
+				dd       {  color: blue; font-size: 12px; } 
+
+				ol       {  color: blue; font-size: 12px; } 
+				ul       {  color: blue; font-size: 12px; } 
+				li       {  color: blue; font-size: 12px; } 
+
+				table    {  color: blue; font-size: 12px; } 
+				caption  {  color: blue; font-size: 12px; text-align:justify; font-family: Times, Helvetica, serif; } 
+				tr       {  color: blue; font-size: 12px; } 
+				td       {  color: blue; font-size: 12px; text-align:justify; font-family: Times, Helvetica, serif; } 
+				th       {  color: blue; font-size: 12px; text-align:justify; font-family: Times, Helvetica, serif; } 
+
+				form     {  color: blue; font-size: 12px; } 
+				fieldset {  color: blue; font-size: 12px; } 
+				legend   {  color: blue; font-size: 12px; } 
+				label    {  color: blue; font-size: 12px; } 
+				input    {  color: blue; font-size: 12px; } 
+				button   {  color: blue; font-size: 12px; } 
+				select   {  color: blue; font-size: 12px; } 
+				optgroup {  color: blue; font-size: 12px; } 
+				option   {  color: blue; font-size: 12px; } 
+				textarea {  color: blue; font-size: 12px; text-align:center;} 
+			
+		 -->
+
+
+
+
+
+		<h3> selecteur d'attribut HTML <h3>
+		<!--
+			Sélecteur de types : attribut html
+			Indiquer le nom d'un attribut permet d'appliquer la règle CSS à toutes les balises qui utilise cette attribut HTML. 
+			Priorité css de : 1 point
+
+			exemple :   
+			
+			[href]  { color: blue; }
+			[type]  { color: yellow; }
+			[rel]   { color: green; }
+			[value] { color: brown; }
+			
+			[href="http://www.google.fr"] { color: grey; }
+			
+			[name]  { color: red; }
+			[name="loisir"] { color: purple; }
+			
+			div[name] { color: lightblue; } /* Tous les div contenant un attribut "class" */
+			div[name="cinema"] { color: lightblue; } /* Tous les div contenant un attribut "class" */
+			
+			#Id1[name="cinema"] { color: lightblue; } /* Tous les #Id1 contenant un attribut "class" */
+			.class1[name="cinema"] { color: lightblue; } /* Tous les .class1 contenant un attribut "class" */
+						
+			[width][height] { color: lightblue; } /* Toutes les balises utilisant les attributs "width" et "height" */
+			exemple : <p width='300px' height='300px'> ... </p>
+						
+			[width='200px'][height='300px'] { color: lightblue; } /* Toutes les balises utilisant les attributs "width" et "height" */
+			exemple : <p width='300px' height='300px'> ... </p>
+			exemple : <div width='200px' height='300px'> ... </div>
+			exemple : <footer width='300px' height='200px'> ... </footer>
+			
+			header[width][height] { color: lightblue; } /* Tous les header contenant un attribut "width" et "height" */
+			exemple : <header width='300px' height='300px'> ... </header>
+			
+			nav[width='100px'][height] { color: lightblue; } /* Tous les nav contenant un attribut "width" et "height" */
+			exemple : <nav width='100px' height='300px'> ... </nav>
+			
+			div[width='200px'][height='200px'] { color: lightblue; } /* Tous les div contenant un attribut "width" et "height" */
+			exemple : <div width='200px' height='200px'> ... </div>
+			
+			[name^="b"] { color: lightblue; } /* Tous les div contenant un attribut "name" qui DÉBUTE par "b" */
+			exemple : <div name='borisgrafiquecd'> ... </div>
+			exemple : <div name='bogard'> ... </div>
+			exemple : <div name='bard'> ... </div>
+			
+			div[id^="a"] { color: lightblue; } /* Tous les div contenant un attribut "id" qui DÉBUTE par "a" */
+			exemple : <div name='abcdgrafiquecd'> ... </div>
+			
+			[name$="cd"] { color: lightblue; } /* Tous les div contenant un attribut "name" qui se TERMINE par "cd" */
+			exemple : <div name='grafiquecd'> ... </div>
+			exemple : <div name='testcd'> ... </div>
+			
+			[class*="ef"] { color: lightblue; } /* Tous les div contenant un attribut "class" qui CONTIENT "ef" */
+			exemple : <div name='grafiquefcd'> ... </div>
+			
+			[lang~="fr"] { color: lightblue; } /* Tous les div contenant un attribut "lang" dont l'une des valeurs est "fr" 
+			exemple : < div lang="fr|FR"> ... </div>
+			
+		 -->
+
+
+
+
+
+		<h3> selecteur de classe : .MotCle1 {propriété:valeur;} <h3>
+		<!--
+			Les selecteur de classe : 
+			Ils permettent d'appliquer un style CSS à un groupe de balises HTML différents.
+			Vous devez utiliser le point "."	
+			Priorité css de : 10 point
+
+			Exemple CSS :
+				* { border: 10px solid red; }
+				p { border: 5px solid blue; background: green; }
+				[class]  { border: 50px solid purple; }
+				[name]   { border: 50px solid purple; }
+				.MotCle1 { border: 1px solid black; background: cyan; color: red; }
+				.MotCle2 { color: navy; font-style: italic; }
+
+			Exemple HTML:
+				<div class="MotCle1"> paragraphe01 </div>
+				<p   class="MotCle1"> paragraphe02 </p>
+				<p   class="MotCle1"> paragraphe03 </p>
+				<p   class="MotCle2"> paragraphe04 </p>
+				<p   class="MotCle1 MotCle2"> Combinaison </p>
+				<p   class="MotCle1 MotCle2"> Combinaison </p>
+				<div class="MotCle1"> paragraphe07 </div>
+				<p >   paragraphe08 </p>
+				<p >   paragraphe09 </p>
+				<p >   paragraphe10 </p>
+		 -->
+
+
+
+
+
+		<h3> selecteur d'identificateur : #MotCle2 {propriété:valeur;} <h3>
+		<!--
+			Les selecteur d'identificateur : 
+			Ils permettent d'appliquer un style CSS à une seul balises HTML uniquement.
+			Vous devez utiliser le diese "#"		
+			Priorité css de : 100 point
+
+			Exemple CSS :
+				* { border: 10px solid red; }
+				p { border: 5px solid blue; background: green; }
+				[name]   { border: 50px solid purple; }
+				#MotCle3 { border: 1px solid red; background: purple; }
+				#MotCle4 { color: navy; }
+				#MotCle5 { font-style: italic; }
+
+				
+			Exemple HTML:
+			
+				<div > paragraphe01 </div>
+				<p id="MotCle3" > paragraphe02 </p>
+				<p > paragraphe03 </p>
+				<p > paragraphe04 </p>
+				<div id="MotCle4 MotCle5"> Combinaison </div>
+				<p > paragraphe5 </p>
+		 -->
+
+
+
+
+
+		<h3> selecteur avec virgule (regroupe de selecteur pour les memes propriétés) <h3>
+		<!--
+		
+			Vous pouvez appliquer le même style CSS à plusieurs sélecteurs différents.
+			Vous devez utiliser la virgule ",".
+			
+			exemple :   h1,h2, [name], .classe1, #id1 { background-color: gray; }
+			
+			au lieu de : 
+						    *    { background-color: gray; }                 
+						   h1    { background-color: gray; }                
+						 [name]  { background-color: gray; }             
+						.classe1 { background-color: gray; }          
+						  #id1   { background-color: gray; }              
+					
+			
+		 -->
+		 
+		 
+		<h3> selecteur avec combinaison div#mot3 ou div.mot4 different de div #mot3 ou div .mot4<h3>
+		<!--
+			
+			Remarque : l'écriture avec ou sans espace est différents
+			
+			exemple1 CSS :   div[name]       { font-size: 10px; }  //association et ecriture des deux... <div class='classe0'> ... </div>
+			exemple1 CSS :   div[class='c1'] { font-size: 10px; }  //association et ecriture des deux... <div class='classe1'> ... </div>
+			exemple1 CSS :   div.clRis2     { font-size: 10px; }  //ASSOCIATION et ecriture des deux...  <div class='classe2'> ... </div>
+			exemple1 CSS :   div#idBo2         { font-size: 10px; }  //ASSOCIATION et ecriture des deux...  <div id='id2'> ... </div>
+			exemple1 CSS :   #idBo3.clRis3    { font-size: 10px; }  //ASSOCIATION et ecriture des deux...  <p id='id3' class='classe3'> ... </p>
+			exemple1 CSS :   #id4.c3.c4.c5   { font-size: 10px; }  //ASSOCIATION et ecriture des deux...  <p id='id4' class='c3 c4 c5 '> ... </p>
+			exemple1 HTML : <div class="classe2"> </div> ... <p class="classe2"> ... </p>
+			
+			exemple2 CSS :   div .classe4  { font-size: 10px; } //ENCAPSULATION balises fils, petits-fils, ... ex : <div> <h1 class='classe4'> titre1 </h1> </div>
+			exemple2 CSS :   div #id4      { font-size: 10px; } //ENCAPSULATION balises fils, petits-fils, ...  ex : <div> <footer> <p id='id4'> adresse </p> </footer> </div>
+			exemple2 CSS :   #id5 .classe5 { font-size: 10px; } //ENCAPSULATION balises fils, petits-fils, ...  ex : <header id='id5'> <h1 class='classe5'> titre1 </h1> </header>
+			exemple2 HTML : <div> <p class="classe4"> ... <p> <div>
+			exemple2 HTML : <div> <p id="id4"> ... <p> <div>
+			
+			
+			
+			exemple3 :   div#id1  { font-size: 10px; } //association et ecriture des deux ...
+			exemple4 :   div #id1 { font-size: 10px; } //balises fils, petits-fils, ...
+			
+			
+			
+		 -->
+
+
+
+
+		<h3> selecteur avec espace (enfants directs et indirects) <h3>
+		<!--
+		
+			Imbrication : L'espace simple est en quelque sorte aussi un sélecteur. 
+			Cela ne sélectionnera que les balises que si elles sont contenues dans la balise dite "balise_parent". 
+			
+			Que ce soit des balises fils, petits-fils, petits-petits-fils, ...
+			
+			exemple :   
+					           div li           { font-size: 10px; }
+					         #nav1 li a         { font-size: 10px; }
+					      div p ul .classe1     { font-size: 10px; }
+					    #id1 div .classe2 ul    { font-size: 10px; }
+					#id1 div .classe2 ul [name] { font-size: 10px; }
+					#id1 div .classe2 ul[name]  { font-size: 10px; }
+			
+		 -->
+
+
+
+
+
+		<h3> selecteur avec chevron (enfants directs uniquement) <h3>
+		<!--
+		
+			Imbrication : Cela ne sélectionnera que les balises directement enfants (fils).
+			Vous devez utiliser le sélecteur '>'.
+			
+			Par exemple :
+			
+			exemple :   div > p         { font-size: 10px; }
+						div > p > ul    { font-size: 10px; }
+						#id1 > .classe2 { font-size: 10px; }
+						.class3 > #id2  { font-size: 10px; }
+						#id3 > div > .classe4 > ol { font-size: 10px; }
+						
+						body > #id4 div .classe5 > ol { font-size: 10px; }
+			
+		 -->
+
+
+
+
+
+		<h3> selecteur avec tilde (freres directs et indirects) <h3>
+		<!--
+		
+			Suivant : Cela ne sélectionnera que les éléments petit frere suivant directes et indirectes une autre élément défini.
+			Vous devez utiliser le sélecteur '~'.
+			
+			Par exemple :
+			
+			exemple :   div ~ p         { font-size: 10px; }
+						div ~ p ~ ul    { font-size: 10px; }
+						#id1 ~ .classe2 { font-size: 10px; }
+						.class3 ~ #id2  { font-size: 10px; }
+						
+						#id4  div .classe5 + ol > li ~ li { font-size: 10px; }
+			
+		 -->
+
+
+
+
+
+		<h3> selecteur avec plus (freres directs uniquement) <h3>
+		<!--
+		
+			Suivant : Cela ne sélectionnera que les éléments petit frere immédiatement suivant un autre élément défini.
+			Vous devez utiliser le sélecteur '+'.
+			
+			Par exemple :
+			
+			exemple :   div + p         { font-size: 10px; }
+						div + p + ul    { font-size: 10px; }
+						#id1 + .classe2 { font-size: 10px; }
+						.class3 + #id2  { font-size: 10px; }
+						
+						#id4  div > .classe5 ~ ol > li + li { font-size: 10px; }
+		 -->
+
+
+
+
+
+		<h3> Contrainte de validation grace aux attributs HTML et/ou aux pseudos sélecteurs CSS : <h3>
+		<!--
+		
+			Contrainte de validation grace aux attributs HTML : 
+			
+			disabled       : Indique que l'élément d'entrée doit être désactivée
+			max            : Indique la valeur maximale d'un élément d'entrée
+			min            : Indique la valeur minimale d'un élément d'entrée
+			pattern        : Indique le modèle d'un élément d'entrée de valeur
+			required       : Indique que le champ de saisie nécessite un élément
+			type           : Indique le type d'un élément d'entrée
+			
+
+			
+			Contrainte de validation grace aux pseudos sélecteurs CSS : 
+			
+			:disabled       : Sélectionne les éléments avec l'attribut "disabled" spécifiée
+			:invalid        : Sélectionne les éléments avec des valeurs invalides
+			:optional       : Sélectionne les éléments avec aucun attribut "optional" spécifiée
+			:required       : Sélectionne les éléments avec l'attribut "required" spécifiée
+			:valid          : Sélectionne les éléments avec des valeurs valides
+			
+		
+		Exemple : 
+		
+			input:disabled       : Sélectionne les éléments avec l'attribut "disabled" spécifiée
+			input:invalid        : Sélectionne les éléments avec des valeurs invalides
+			input:optional       : Sélectionne les éléments avec aucun attribut "optional" spécifiée
+			input:required       : Sélectionne les éléments avec l'attribut "required" spécifiée
+			input:valid          : Sélectionne les éléments avec des valeurs valides
+		
+		 -->
+
+
+
+
+
+		<h3> selecteur avec Pseudo-classe <h3>
+		<!--
+		
+			Le W3C distingue les pseudo-classes (css2) avec deux-points(:) 
+			par rapport au pseudo-elements (css3) avec des doucles deux-points(::) .
+			Les deux ecritures restent compatibles.
+			
+		
+			a { color: lightblue; }              /* Lien non visité */
+			
+			a:link    { color: navy; }           /* Lien non visité par défaut*/
+			a:hover   { color: purple; }         /* Lien survolé ou ayant le focus */
+			a:focus   { color: purple; }         /* Lien survolé ou ayant le focus */
+			
+			a:hover, a:focus { color: green; }   /* Lien survolé ou ayant le focus */
+			
+			a:active  { color: yellow; }         /* Lien actif (état cliqué) */
+			a:visited { color: pink; }           /* Lien visité */
+
+			a         { background-color: navy; display:block; width:100px; height:50px;}  
+			a:hover   { background-color: green; }           /* Lien survolé ou ayant le focus */
+			a:active  { background-color: yellow; }          /* Lien actif (état cliqué) */
+			a:visited { background-color: pink; }            /* Lien visité */
+
+			a { background-image: url("../images/bouton1.png"); display:block; width:100px; height:50px;}   /* Lien non visité par défaut*/
+			a:hover   { background-image: url("../images/bouton2.png"); }           /* Lien survolé ou ayant le focus */
+			a:active  { background-image: url("../images/bouton3.png"); }           /* Lien actif (état cliqué) */
+			a:visited { background-image: url("../images/bouton1.png"); }           /* !!!!!!!!! NE MARCHE PAS !!!!!!!!! */
+
+			a { background: #777777 url("../images/bouton1.png") no-repeat top left; }            /* Lien non visité par défaut*/
+			a:hover   { background: #555555 url("../images/bouton2.png") no-repeat top left; }    /* Lien survolé ou ayant le focus */
+			a:active  { background: #333333 url("../images/bouton3.png") no-repeat top left; }    /* Lien actif (état cliqué) */
+			a:visited { background-image: url("../images/bouton1.png"); }                         /* !!!!!!!!! NE MARCHE PAS !!!!!!!!! */
+			
+			
+			div { color: navy;  display:block; width:100px; height:50px;}  /* Lien non visité par défaut*/
+			div:hover   { color: green; }                                  /* Lien survolé ou ayant le focus */
+			div:active  { color: yellow; }                                 /* Lien actif (état cliqué) */
+			div:visited { color: pink; }                                   /* Lien visité */
+
+			
+			
+			.class123 { color: navy;  display:block; width:100px; height:50px;}  /* Lien non visité par défaut*/
+			.class123:hover { color: green; }                                    /* Lien survolé ou ayant le focus */
+			.class123:active { color: yellow; }                                  /* Lien actif (état cliqué) */
+			.class123:visited { color: pink; }                                   /* Lien visité */
+
+			
+			
+			#id123 { color: navy;  display:block; width:100px; height:50px;}   /* Lien non visité par défaut*/
+			#id123:hover   { color: green; }                                   /* Lien survolé ou ayant le focus */
+			#id123:active  { color: yellow; }                                  /* Lien actif (état cliqué) */
+			#id123:visited { color: pink; }                                    /* Lien visité */
+
+			
+			
+			p:first-letter { color: purple; } /* Premier caractère de l'élément P */
+			p:first-line   { color: purple; } /* Première ligne de l'élément P */
+			p:first-child  { color: purple; } /* Premier élément P qui est le premier enfant de son parent */
+			
+			tr:nth-child(3)  { color: purple; } /* troisieme element tr */
+			div:nth-child(7) { color: purple; } /* septieme element div */
+			
+			tr:nth-child(2n)   { color: purple; } /* un element sur deux (paire) */
+			li:nth-child(2n)   { color: purple; } /* un element sur deux (paire) */
+			li:nth-child(even) { color: purple; } /* permet de cibler les enfants pairs.*/
+			
+			li:nth-child(2n + 1) { color: purple; } /* un element sur deux (impaire) */
+			li:nth-child(odd)    { color: purple; } /* permet de cibler les enfants impairs*/
+			
+			li:nth-child(3n + 5) { color: purple; } /* un element sur deux  */
+			
+			li:nth-last-child(even)   { color: purple; } /* permet de cibler les enfants pairs en commencant par la fin.*/
+			li:nth-last-child(2n + 1) { color: purple; } /* un element sur deux (impaire) en commencant par la fin.*/
+			li:nth-last-child(odd)    { color: purple; } /* permet de cibler les enfants impairs en commencant par la fin.*/
+			li:nth-last-child(3n + 5) { color: purple; } /* un element sur deux en commencant par la fin.*/
+			
+			div:nth-of-type(3)    { background: #0000ff;}   /* permet de cibler le 3 element de type "div" */
+			div:nth-of-type(even) { background: #0000ff;}   /* permet de cibler les elements pairs de type "div" */
+			div:nth-of-type(odd)  { background: #ff0000;}   /* permet de cibler les elements impairs de type "div" */
+			
+			
+			
+			P:before     { content: "Contenu placé avant : " }                         /* générer un contenu avant une balise */
+			P:after      { content: "Contenu placé apres : " }                         /* générer un contenu apres une balise */
+			img:before   { content: attr(alt) }                                        /* insère le texte de l'attribut "alt" avant l'image visible */
+			@media aural { blockquote:after { content: url("beautiful-music.wav") } }  /* jouer un fichier son à la fin d'une citation */
+			H1:before    { content: "chapitre\A section\A page" }                      /* produire des retours à la ligne dans le contenu grace à "\A" */
+
+			body { COUNTER-RESET: indentifiant1;                                    /* Réinitialise le compteur indentifiant1 (si les h1 st en dehors)*/
+				   COUNTER-RESET: indentifiantA -1 indentifiantB 4  }               /* Met indentifiantA à -1 et indentifiantB à 4 */
+				   
+			h1:before { COUNTER-INCREMENT: indentifiant1;                                          /* Incrémente le compteur de indentifiant1 */
+						content: " Texte placé avant " COUNTER(indentifiant1) " : ";  }            /* Affiche le compteur indentifiant1 */
+						
+						
+			ol { COUNTER-RESET: indentifiant2;                              /* Créé un compteur indentifiant2 pour chaque élément ol */
+				 list-style-type: none;       }                             /* Supprime les numerotations par défaut */
+			
+			li:before { COUNTER-INCREMENT: indentifiant2;                   /* Incrémente le compteur de indentifiant2 */
+						content: COUNTERS(indentifiant2, ".") " ";  }       /* Si plusieurs imbrications alors les compteurs seront séparés par "." */
+
+			Exemple : 
+			
+				body      { counter-reset:CompteurTitre1; }
+				h1        { counter-reset:CompteurSousTitre2; }
+				h1:before { counter-increment:CompteurTitre1; content:" PARTIE: " counter(CompteurTitre1) ". "; }
+				h2:before {
+					COUNTER-INCREMENT:CompteurSousTitre2;
+					content:COUNTER(CompteurTitre1) "." COUNTER(CompteurSousTitre2) " ";
+					
+					/* COUNTER-INCREMENT: chapitre section 2 page; }  */
+					/* Incrémente les compteurs chapitre et page de +1 et section de +2 */
+				}
+				
+					
+				H3:Before { Content: Counter(h3) ". "; Counter-Increment: h3; Counter-Reset: h4; }
+				H4:Before { Content: Counter(h3) "." Counter(h4, Lower-Alpha) ". "; Counter-Increment: h4; }
+				
+				Voici la notation correspondant au style par défaut : counter(nom)
+				et celle correspondant à un style donné :             counter(nom, 'list-style-type')
+				tous les styles sont admis :		h1:before        { content: counter(chno, upper-latin) ". " }
+													h2:before        { content: counter(section, upper-roman) " - " }
+													blockquote:after { content: " [" counter(bq, armenian) "]" }
+													div.note:before  { content: counter(notecntr, disc) " " }
+													p:before         { content: counter(p, none) }
+
+		-->
+
+
+
+
+
+		<h3> selecteur avec !important ajoute de 1000 points dans les priorités CSS <h3>
+		<!--
+		
+			margin-top: 3.5em !important;  //règle valable avec tous les navigateurs sauf IE
+			
+			Rappel : Voici quelques exemples de sélecteurs et de règles CSS classés par ordre croissant de spécificité :
+
+				*              {...}        : 0000 (aucun identifiant, aucune classe, aucun élément);
+				p              {...}        : 0001 (aucun identifiant, aucune classe, un élément);
+				div p          {...}        : 0002 (aucun identifiant, aucune classe, deux éléments);
+				nav > div + ol {...}        : 0003 (aucun identifiant, aucune classe, trois éléments);
+				.class         {...}        : 0010 (aucun identifiant, une classe, aucun élément);
+				p.class        {...}        : 0011 (aucun identifiant, une classe, un élément);
+				div p.class    {...}        : 0012 (aucun identifiant, une classe, deux éléments);
+				#id            {...}        : 0100 (un identifiant, aucune classe, aucun élément);
+				p#id           {...}        : 0101 (un identifiant, aucune classe, un élément);
+				div p#id       {...}        : 0102 (un identifiant, aucune classe, deux éléments);
+				.class #id     {...}        : 0110 (un identifiant, une classe, aucun élément);
+				.class p#id    {...}        : 0111 (un identifiant, une classe, un élément);
+				div.class p#id {...}        : 0112 (un identifiant, une classe, deux éléments);
+				<p style="...">             : 1000 (attribut HTML style qui ne sera supplanté que par un style utilisateur normal);
+				p {... !important;}         : 1000 (selecteur css marqué !important qui recoit une priorité de 1000) !!! plus important que le style ne ligne <p style="...">
+				<p style="... !important">  : 1000 (attribut HTML style marqué !important qui ne sera supplanté 
+													que par un style utilisateur lui-même marqué !important). !!! plus important que tout !!!
+			
+		 -->
+
+
+
+
+
+		<h3> propriétés de style CSS pour le texte <h3>
+		<!--
+			
+			Les unités de longueur :
+				em : hauteur de la police de caractère
+				ex : hauteur du caractère x minuscule ('x')
+				px : taille d'un pixel 
+				cm : centimètres (1 cm = 10 mm)
+				mm : millimètres
+				in : inches (1 in = 2.54 cm)
+				pt : points (1 pt = 1/72 in)
+				pc : picas (1 pc = 12pt)
+				 % : Pourcentage
+				
+				
+				
+			Les unités de longueurs relatives :
+				em : la valeur de 'font-size' pour la police concernée
+				ex : la valeur de 'x-height' pour la police concernée
+				px : une quantité de pixels, en fonction de l'appareil de visualisation. 
+				
+			Exemple : 
+				H1 { margin: 0.5em }      /* em */
+				H1 { margin: 1ex }        /* ex */
+				P  { font-size: 12px }    /* px */
+				
+				
+				
+			Les unités de longueurs absolues : 
+				in : pouce -- un pouce (inch) est égal à 2,54 cm.
+				cm : centimètre
+				mm : millimètre
+				pt : point -- le point de CSS2 est égal à 1/72 de pouce.
+				pc : pica -- un pica est égal à 12 points. 
+				
+			Exemple : 
+				H1 { margin: 0.5in }      /* pouces  */
+				H2 { line-height: 3cm }   /* centimètres */
+				H3 { word-spacing: 4mm }  /* millimètres */
+				H4 { font-size: 12pt }    /* points */
+				H4 { font-size: 1pc }     /* picas */
+
+
+				
+
+			/*color : couleur de la police de caractères.*/
+			color : #ffffff;
+
+
+
+			/*	font-size : taille de la police de caractères. préférer "em" et "%".*/
+			font-size : 1em;
+
+
+
+			/* font-style : style de la police.*/
+			font-style : italic;
+
+
+
+			/* font-weight : epaisseur de la police.*/
+			font-weight : bold;
+
+
+
+			/* text-decoration : soulignement ou surlignement.  */ 
+			text-decoration : none;
+			text-decoration : underline;
+
+
+
+			/* text-transform : mise en majuscules/minuscules.  */ 
+			text-transform : uppercase;
+
+
+
+			/* font-variant : affichage en petites capital.  */ 
+			font-variant : small-caps;
+			font-variant : small-caps;
+
+
+
+			/* text-align : alignement du texte.  */ 
+			text-align : center;
+
+
+
+			/* text-indent : décalage de la première ligne du texte.  */ 
+			text-indent : 100%;
+
+
+
+			/* line-height : hauteur des caractères.  */ 
+			line-height : 100%;
+
+
+
+			/* letter-spacing : espacement entre caractères.  */ 
+			letter-spacing : 100%;
+
+
+
+			/*	word-spacing : espacement entre mots. */
+			word-spacing : 100%;
+			
+			
+			/******* exemple : ******/
+			
+			body {
+				font-size : 1em; 
+				line-height : 100%;
+			}
+			
+			html, body {
+				font-size : 1em; 
+				line-height : 100%;
+			}
+			
+			/************************/
+
+
+
+
+			.typographie {
+
+			/*	font-size : taille de la police de caractères. préférer "em" et "%".*/
+				font-size : 1em ;
+				font-size : 12px ;
+				font-size : 100% ;
+				font-size : 12pt ;
+				font-size : 12px ;
+
+
+
+				/*color : couleur de la police de caractères.*/
+				color : white ;
+				color : #ffffff ;  /* équivanlent à RRVVBB */
+				color : #fff ;  /* équivanlent à RVB */
+				color : #1c7 ;  /* équivanlent à 11cc77 */
+				color : rgb(0,0,0) ;
+				color : rgb(255,255,255) ;
+				color : rgba(0,0,0,0.1) ;
+				color : rgba(255,255,255,1) ;
+				color : transparent ;
+
+
+
+				/* font-style : style de la police.*/
+				font-style : normal ;
+				font-style : italic ;
+				font-style : oblique ;
+				
+
+
+				/* font-weight : epaisseur de la police.*/
+				font-weight : normal ;
+				font-weight : bold ;
+				font-weight : bolder ;
+				
+
+
+				/* text-decoration : soulignement ou surlignement.  */ 
+				text-decoration : none ;
+				text-decoration : underline ;
+				text-decoration : line-throught ;
+				text-decoration : overline ;
+				
+
+
+				/* font-variant : affichage en capital  */ 
+				font-variant : normal ;
+				font-variant : small-caps ;
+				font-variant : small-caps ;
+				
+
+
+				/* text-transform : mise en majuscules/minuscules.  */ 
+				text-transform : none ;
+				text-transform : capitalize ;
+				text-transform : uppercase ;
+				text-transform : lowercase ;
+				
+
+
+				/* text-align : alignement du texte.  */ 
+				text-align : left ;
+				text-align : center ;
+				text-align : right ;
+				text-align : justify ;
+				
+
+
+				/* text-indent : décalage de la première ligne du texte.  */ 
+				text-indent : 5px ;
+				text-indent : 5em ;
+				text-indent : 100% ;
+				
+
+
+				/* line-height : hauteur des caractères.  */ 
+				line-height : normal ;
+				line-height : 1em ;
+				line-height : 12px ;
+				line-height : 100% ;
+				line-height : 12pt ;
+				line-height : 12px ;
+				
+
+
+				/* letter-spacing : espacement entre caractères.  */ 
+				letter-spacing : normal ;
+				letter-spacing : 12px ;
+				letter-spacing : 100% ;
+				letter-spacing : 12pt ;
+				letter-spacing : 12px ;
+				
+				
+
+			/*	word-spacing : espacement entre mots. */
+				word-spacing : normal ;
+				word-spacing : 12px ;
+				word-spacing : 100% ;
+				word-spacing : 12pt ;
+				word-spacing : 12px ;
+				
+				
+				
+			/*	font-family : police de caractères. */
+				font-family : arial;
+				font-family : "Times New Roman";
+				font-family : "Times New Roman", Georgia, Times, arial, cursive, fantasy, monospace, sans-serif, serif;
+			}
+			
+			
+		-->
+
+
+
+
+		<h3> propriétés de style CSS pseudo-element <h3>
+		<!--
+		
+			a { color: lightblue; }            /* Lien non visité */
+
+			a:link {    color: navy; }            /* Lien non visité et non utilisé */
+			a:hover {   color: purple; }         /* Lien survolé ou ayant le focus */
+			a:focus {   color: purple; }         /* Lien survolé ou ayant le focus */
+			a:active {  color: yellow; }        /* Lien actif (état cliqué) */
+			a:visited { color: pink; }         /* Lien visité */
+			
+			
+
+			.classelien1:link {    background-color: blue; }            /* Lien non visité */
+			.classelien1:hover {   background-color: red; }         /* Lien survolé ou ayant le focus */
+			.classelien1:focus {   background-color: red; }         /* Lien survolé ou ayant le focus */
+			.classelien1:active {  background-color: green; }        /* Lien actif (état cliqué) */
+			.classelien1:visited { background-color: purple; }         /* Lien visité */
+
+			
+			
+			.classelien2 {       background-color: blue; }            /* Lien non visité */
+			.classelien2:hover { background-color: red; }         /* Lien survolé ou ayant le focus */
+
+			
+			
+			#idlien1 a:link {    background-image: url(./image1.jpg); }            /* Lien non visité */
+			#idlien1 a:hover {   background-image: url(./image2.jpg); }         /* Lien survolé ou ayant le focus */
+			#idlien1 a:focus {   background-image: url(./image2.jpg); }         /* Lien survolé ou ayant le focus */
+			#idlien1 a:active {  background-image: url(./image3.jpg); }}        /* Lien actif (état cliqué) */
+			#idlien1 a:visited { background-image: url(./image1.jpg); }         /* Lien visité */
+
+			
+			
+			#idlien2 a {       
+						display:block;
+						width: 70px;
+						height: 100px;
+						background-image: url(./image1.jpg); 
+			}
+			#idlien2 a:hover { background-image: url(./image2.jpg); }         /* Lien survolé ou ayant le focus */
+			#idlien2 a:active {  background-image: url(./image3.jpg); }}        /* Lien actif (état cliqué) */
+
+			
+			
+			input[button]:link {    color: navy; }            /* Lien non visité */
+			input[button]:hover {   color: purple; }         /* Lien survolé ou ayant le focus */
+			input[button]:focus {   color: purple; }         /* Lien survolé ou ayant le focus */
+			input[button]:active {  color: yellow; }        /* Lien actif (état cliqué) */
+			input[button]:visited { color: pink; }         /* Lien visité */
+
+
+					
+					
+		 -->
+
+
+
+
+
+		<h3> propriétés de style CSS pour les listes <h3>
+		<!--
+
+			/* list-style : réglage globale d'une liste.  */ 
+			list-style : square outside url("./images/toto.jpg");
+
+			
+			
+			/* list-style-type : type de liste.  */ 
+			list-style-type: none;                                 /* dans les resets css */
+			list-style-type: disc;
+			list-style-type: circle;
+			list-style-type: square;
+			list-style-type: decimal;
+			list-style-type: lower-roman;
+			list-style-type: upper-roman;
+			list-style-type: lower-alpha;
+			list-style-type: upper-alpha;
+			list-style-type: armenian;
+			list-style-type: katakana
+			list-style-type: ...etc.
+
+			
+			
+			/*list-style-position : position du marqueur de liste dans la liste ou hors de la liste*/
+			list-style-position: outside; /*  (outside est plus normal).  */
+			list-style-position: outside; 
+			list-style-position: inside;
+
+			
+			
+			/* list-style-image : image pour remplacer le marqueur de la liste.  */ 
+			list-style-image: url('./images/point.jpg');
+			
+
+
+
+
+
+			.liste {
+
+
+			/* list-style-type : type de liste.  */ 
+			list-style-type: none ;
+			list-style-type: disc ;
+			list-style-type: circle ;
+			list-style-type: square ;
+			list-style-type: decimal ;
+			list-style-type: upper-roman ;
+			list-style-type: lower-alpha ;
+			list-style-type: upper-alpha ;
+			
+
+
+			/*list-style-position : position du marqueur de liste dans la liste ou hors de la liste*/
+			list-style-position: outside ; /*  (outside est plus normal).  */
+			list-style-position: inside ;
+			
+
+
+			/* list-style-image : image pour remplacer le marqueur de la liste.  */ 
+			list-style-image: none ;
+			list-style-image: url(images/point.jpg) ;
+			
+			
+
+			/* list-style : réglage globale d'une liste.  */ 
+			list-style: circle outside url(toto.jpg) ;
+			
+			
+			
+		}
+
+
+
+
+
+		 -->
+
+
+
+
+
+		<h3> propriétés de style CSS pour les blocs et bordures <h3>
+		<!--
+			/* margin : réglage des marges autour des blocs.  */
+			
+			margin: 1px;                /* 1px de chaque cotés */
+			
+			margin: 10px 20px;          /* la premiere valeur pour le Haut et bas : 10px,  la deuxieme valeur pour la droite et gauche 20px */
+			margin: 0px auto;           /* Centré à droite et à gauche */
+			
+			margin: 1px 2px 3px;        /* la 1er valeur pour le Haut : 1px,  la 2e valeur pour la droite et gauche : 2px,  la 3e valeur pour le bas 3px */
+			
+			margin: 1px 2px 3px 4px;    /* margin dans l'ordre : haut, droite, bas, gauche */
+			
+			margin-top: 1px;  
+			margin-left: 1px;  
+			margin-bottom: 1px;  
+			margin-right: 1px;  
+			
+			
+			
+			/* padding : réglage des marges à l'intérieur des blocs.  */ 
+			padding: 1px;                /* 1px de chaque coté */
+			padding: 10px 20px;           /* la premiere valeur pour le Haut et bas : 10px,  la deuxieme valeur pour la droite et gauche 20px */
+			padding: 0px auto;           /* Centré à droite et à gauche */
+			padding: 1px 2px 3px;        /* la 1er valeur pour le Haut : 1px,  la 2e valeur pour la droite et gauche : 2px,  la 3e valeur pour le bas 3px */
+			padding: 1px 2px 3px 4px;    /* padding dans l'ordre : haut, droite, bas, gauche */
+			
+			padding-top: 1px;  
+			padding-left: 1px;  
+			padding-bottom: 1px;  
+			padding-right: 1px;  
+			
+			
+
+			/* border : affichage global d'une bordure.  */ 
+			border: 5px dotted green;         /* border: width style color; */
+
+			/* border-width : largeur de la bordure.  */ 
+			border-width: 1px 2px 3px 4px;    /* bordure haut, droite, bas, gauche */
+
+			/* border-style : type de la bordure.  */ 
+			border-style: solid;
+
+			/* border-color : couleur de la bordure.  */ 
+			border-color: #ff0000;
+
+			/* cursor : type de pointeur affiché pour la souris.  */ 
+			cursor: auto;
+
+
+
+			.bloc-bordure{
+
+			/* margin : réglage des marges autour des blocs.  */
+			
+			margin: 15px ; /* 15px de chaque coté */
+			
+			margin: 10px 20px ; /* haut et bas : 10px, droite et gauche 20px */
+			margin: 0px auto; /* centré à droite et à gauche */
+			
+			margin: 1px 2px 3px 4px ; /* marge haut, droite, bas, gauche */
+			margin: ; /* marge haut, droite, bas, gauche */
+			
+			margin-top: 15px; 
+			margin-right: 15px; 
+			margin-bottom: 15px;
+			margin-left: 15px;
+			
+
+
+			/* padding : réglage des marges à l'intérieur des blocs.  */ 
+			
+			padding: 1em ; /* 1em de chaque coté */
+			
+			padding: 10px 20px ; /* haut et bas : 10px, droite et gauche 20px */
+			padding: 10px auto ; /* centré à droite et à gauche */
+			
+			padding: 1px 2px 3px 4px ; /* padding haut, droite, bas, gauche */
+			
+			padding-top: 10%; 
+			padding-right: 30px; 
+			padding-bottom: 20px;
+			padding-left: 40px;
+			
+
+
+			/* border : affichage global d'une bordure.  */ 
+			border: 5px dotted green ;
+			
+			border-width: 5px ;
+			border-style: dotted ;
+			border-color: green ;
+			
+			
+
+			/* border-width : largeur de la bordure.  */ 
+			border-width: 5px ;
+			border-width: 0.3em ;
+			border-width: 1px 2px 3px 4px ; /* bordure haut, droite, bas, gauche */
+			border-width-top: 1px ;
+			
+
+
+			/* border-color : couleur de la bordure.  */ 
+			border-color: red ;
+			border-color: #ff0000 ;
+			border-color: rgb(255,0,0) ;
+			
+
+
+			/* border-style : type de la bordure.  */ 
+			border-style: none ;
+			border-style: solid ;
+			border-style: dotted ;
+			border-style: dashed ;
+			border-style: inset ;
+			border-style: outset ;
+			border-style: double ;
+			border-style: groove ;
+			border-style: ridge ;
+			
+
+
+			/* cursor : type de pointeur affiché pour la souris.  */ 
+			cursor: auto ;
+			cursor: pointer ;
+			cursor: defaut ;
+			cursor: crosshair ;
+			cursor: move ;
+			cursor: help ;
+			cursor: wait ;
+			
+			
+			
+		}
+
+
+
+
+
+	
+		 -->
+
+
+
+
+
+		<h3> propriétés de style CSS pour les tableaux <h3>
+		<!--
+				
+			/* border-collapse : séparation ou collage des cellules du tableau (espace ou non entre les cellules).  */ 
+			border-collapse: separate;
+			
+			
+
+			/* border-spacing : taille de l'espacement entre les cellules (si on est en "border-collapse: separate;").  */ 
+			border-spacing: 3px;
+			
+			
+
+			/* empty-cells : gère l'affichage ou non d'une cellule si elle est vide.  */ 
+			empty-cells : hide;
+			
+			
+
+			/* caption-side : placement de la légende du tableau.  */ 
+			caption-side: top;
+			
+			
+
+			/* vertical-align : alignement vertical dans la cellule d'un tableau.  */ 
+			vertical-align: middle;
+			
+			
+
+			/* table-layout : technique de calcul des la taille des cellules du tableau.  */ 
+			table-layout: auto;
+			
+			
+
+
+
+
+
+			.tableaux{
+
+			/* border-collapse : séparation ou collage des cellules du tableau (espace ou non entre les cellules).  */ 
+			border-collapse: separate;
+			border-collapse: collapse;
+			
+
+
+			/* border-spacing : taille de l'espacement entre les cellules (si on est en "border-collapse: separate;").  */ 
+			border-spacing: 3px;
+			border-spacing: 1em;
+			
+
+
+			/* empty-cell : gère l'affichage ou non d'une cellule si elle est vide.  */ 
+			empty-cell : hide;
+			empty-cell : show;
+			
+
+
+			/* caption-side : placement de la légende du tableau.  */ 
+			caption-side: top;
+			caption-side: right;
+			caption-side: bottom;
+			caption-side: left;
+			
+
+
+			/* vertical-align : alignement vertical dans la cellule d'un tableau.  */ 
+			vertical-align: baseline;
+			vertical-align: top;
+			vertical-align: middle;
+			vertical-align: bottom;
+			
+
+
+			/* table-layout : technique de calcul des la taille des cellules du tableau.  */ 
+			table-layout: auto;
+			table-layout: fixed;
+			
+			
+			
+		}
+
+
+
+
+
+			
+		 -->
+
+
+
+
+
+		<h3> propriétés de style CSS pour l'arrière-plan <h3>
+		<!--
+
+			/* background : caractéristique globale d'un fond.  */ 
+			/* background: color url(image) repeat origin position;
+			
+			background: red url(images/fond.png) no-repeat fixed center top;
+			background: red url(images/fond.png) no-repeat scroll 100px 300px;
+			
+
+
+			/* background-color : couleur de fond.  */ 
+			background-color: #ff0000;
+			
+			
+
+			/* background-image : image de fond.  */ 
+			background-image: url('images/labelleimage.png');
+			
+
+
+			/* background-repeat : répétition de l'image de fond.  */ 
+			background-repeat: no-repeat;
+			
+
+
+			/* background-attachment : fixation de l'image sur le navigateur (contre le défilement).  */ 
+			background-attachment: scroll;
+			
+			
+
+			/* background-position : position de l'image sur le fond (x, y).  */ 
+			background-position: 5px 10px;
+			
+			
+			
+			/* background-size :  Agrandi ou rétréci l'image de fond  */ 
+			background-size: 100% 100%;
+			background-size: 50%;
+			background-size: 500px 300px;
+			background-size: 70px;
+			
+
+
+
+
+
+			.arrière-plans{
+
+			/* background : caractéristique globale d'un fond.  */ 
+			background: red url(images/fond.png) no-repeat scroll center top ;
+			background: red url(images/fond.png) no-repeat fixed center top ;
+			background: red url(images/fond.png) repeat-x 50% 50% ;
+			background: red url(images/fond.png) repeat-y 100px 100px ;
+			background: red url(images/fond.png) repeat 100px 200px ;
+			
+
+
+			/* background-color : couleur de fond.  */ 
+			background-color: red ;
+			background-color: #ff0000 ;
+			background-color: rgb(255,0,0) ;
+			
+
+
+			/* background-image : image de fond.  */ 
+			background-image: url(images/labelleimage) ;
+			
+
+
+			/* background-repeat : répétition de l'image de fond.  */ 
+			background-repeat: repeat ;
+			background-repeat: repeat-x ;
+			background-repeat: repeat-y ;
+			background-repeat: no-repeat ;
+			
+
+
+			/* background-attachment : fixation de l'image sur le navigateur (contre le défilement).  */ 
+			background-attachment: scroll ;
+			background-attachment: fixed ;
+			
+
+
+			/* background-position : position de l'image sur le fond (x, y).  */ 
+			background-position: left top ;
+			background-position: center center ;
+			background-position: right bottom ;
+			background-position: 50% 50% ;
+			background-position: 5px 10px ;
+			
+			
+			
+			/* background-size :  Agrandi ou rétréci l'image de fond  */ 
+			background-size: 100% 100%;
+			background-size: 50%;
+			background-size: 500px 300px;
+			background-size: 70px;
+			
+			
+			
+		}
+
+
+
+
+
+
+		 -->
+
+
+
+
+
+		<h3> propriétés de style CSS pour le positionnement <h3>
+		<!--
+			body {margin:0; padding:0px;} 
+			
+			
+			
+			header, hgroup, nav, section, article, aside, footer, div {border:5px; display:block;}
+			#wrapper { width:980px; margin: 0 auto; background-color: LightCyan; }
+			
+			
+			
+			header  {width:950px; margin: 0 auto; padding:0px;}
+			aside   {width:150px; margin:10px;  float:left;}
+			section {width:700px; margin:20px 150px 0 0; }
+			footer  {width:950px; margin: 0 auto; padding:0px;}
+			
+
+
+
+
+
+			.positionnement{
+
+			/* display : mode d'affichage (ou non) d'un bloc ou d'un élément.  */ 
+			display: none;
+			display: block;
+			display: inline;
+			display: inline-block; /* correspond à un élément inline avec un comportement bloc (non w3c). compatible avec internet explorer, opéra et safari pour firefox < 2 utilise */
+			display: list-item ; /* comme de type block, mais précédé d'une puce comme dans une liste énumérative.*/
+			
+
+
+			/* width : largeur d'un block. height : hauteur d'un block.  */ 
+			width: 0;
+			width: 400px;
+			width: 50em;
+			width: 60%;
+			min-width: 100px;
+			max-width: 100px;
+			
+			
+			
+			height: 0;
+			height: 400px;
+			height: 50em;
+			height: 60%;
+			min-height: 100px;
+			max-height: 100px;
+			
+			
+			
+			/* margin : marge externe */
+			margin: 1px 2px 3px 4px;    
+			margin: 1px 2px 3px;    
+			margin: 1px 2px;    
+			margin: 1px;  
+
+			
+			
+			margin-top: 1px;  
+			margin-left: 1px;  
+			margin-bottom: 1px;  
+			margin-right: 1px;  
+			
+
+			
+			/* padding : marge interne */
+			padding: 1px 2px 3px 4px;    
+			padding: 1px 2px 3px;    
+			padding: 1px 2px;    
+			padding: 1px;    
+			
+			
+
+			padding-top: 1px;  
+			padding-left: 1px;  
+			padding-bottom: 1px;  
+			padding-right: 1px;  
+			
+
+
+			/* clear : pour obliger un bloc à se placer derriere un flottant. avec clear: vous pouvez interrompre le cours du texte pour en forcer la poursuite sous l'élément/le passage entouré. les données suivantes sont possibles:
+			
+			
+			/* left : impose pour float:left la poursuite dessous.  */ 
+			
+			
+			/* right : impose pour float:right la poursuite dessous.  */ 
+			
+			
+			/* both : impose dans chaque cas la poursuite dessous.  */ 
+			
+			
+			/* none : n'impose pas de poursuite dessous. (réglage normal).  */ 
+			
+			
+			/* overflow (passage d'élément au contenu trop important)  */ 
+			
+			
+			/* overflow : visible = l'élément sera agrandi de manière à ce que son contenu soit complètement visible dans tous les cas.  */ 
+			
+			
+			/* overflow : hidden = l'élément sera coupé s'il dépasse les limites.  */ 
+			
+			
+			/* overflow : scroll = l'élément sera coupé s'il dépasse les limites. le navigateur www doit pourtant proposer des barres de défilement, un peu comme dans une fenêtre cadre incorporée.  */ 
+			
+			
+			/* overflow : auto = le navigateur web doit décider en cas de conflit, comment l'élément sera affiché. proposer des barres de défilement est également permis.
+
+
+			/* overflow-x, overflow-y : pour gérer le dépassement du contenu d'un objet en horizontal ou vertical.  */ 
+			overflow-x: auto ;
+			overflow-x: visible ;
+			overflow-y: hidden ;
+			overflow-y: scroll ;
+			
+
+
+			/* z-index : hors static, permet de gérer l'empilement des blocs.  */ 
+			z-index: auto ;
+			z-index: 10 ;
+			z-index: 999 ;
+			
+			
+			
+		}
+
+
+		-->
+
+
+
+
+		<h3> Principes de base en positionnement <h3>
+		
+		<!--
+		
+			/* display : mode d'affichage (ou non) d'un bloc ou d'un élément.  */ 
+			
+			visibility: hidden;
+			
+			
+			
+			display: none;
+			display: block;        /* Pour positionner et dimensionner un elemnt il faut qu'il soit en type bloc */ 
+			display: inline;
+			display: inline-block; 
+			
+			
+
+			/* width : largeur d'un block. height : hauteur d'un block.  */ 
+			
+			width: 960px; /* Pour positionner et dimensionner un elemnt il faut qu'il ait une largeur */ 
+			height: 60%;
+			min-width: 100px;
+			max-height: 100px;
+			
+			
+
+		Exemple : 
+
+			<html lang='fr-FR'>
+				<head>
+					<title> Bienvenue sur ma page WEB !!! </title>
+					<meta name="Description" content="Description du site " >
+					<meta charset="utf-8" > 
+					<style>
+					
+						#contenu {width:960px; margin:0 auto; background-color:#FFFFFF;}
+						body {background: lightblue url('./image_icone.png') repeat;}
+						p {color:blue !important;} /*: 1000 (selecteur css marqué !important qui recoit une priorité de 1000) */
+						
+						.invisibile { visibility: hidden; }
+						
+						.NonAffiche { display: none; }
+						
+						.block1 { display: block; width: 40%;}
+						.inline1 { display: inline; width: 40%;}
+
+					</style>
+				</head>	
+
+				<body> 
+					<div id="contenu"> 
+						<p > Paragraphe1 : ...</p>
+						<p style="color:red;"> Paragraphe2 : 1000 (attribut HTML style qui ne sera supplanté que par un style utilisateur normal); </p>
+						<p style="color:green !important;">  Paragraphe3 : 1000 (attribut HTML style marqué !important qui ne sera supplanté </p>
+						<p > Paragraphe4 : ...</p>
+						<p class='invisibile'> Paragraphe5 : invisibile </p>
+						<p > Paragraphe6 : ...</p>
+						<p class='NonAffiche'> Paragraphe7 : NonAffiche </p>
+						<p > Paragraphe8 : ...</p>
+						<p class='block1'> Paragraphe9 : ...</p>
+						<p class='block1'> Paragraphe10 : ...</p>
+						<p > Paragraphe11 : ...</p>
+						<p class='inline1'> Paragraphe12 : ...</p>
+						<p class='inline1'> Paragraphe13 : ...</p>
+						<p > Paragraphe14 : ...</p>
+					</div>
+				</body>
+			</html>
+			
+			-->
+
+
+
+
+
+		<h3> positionnement static <h3>
+		<!--
+
+			/* positionnement normal*/
+
+			header { position: static; }
+			div {  position: static; width:960px;}
+			img { position: static; width:60px; display:block; }
+			a { position: static; width:60px; display:inline-block; }
+			
+			-->
+
+
+
+
+
+		<h3> positionnement fixed <h3>
+		<!--
+		
+			position: fixed;   /*positionnement fixe dans la fenetre*/
+			
+			/* top: XX */
+			/* bottom: XX */
+			/* left: XX */
+			/* right: XX */
+
+			.class123 { position:fixed; top: 10px; right: 100px; width:100px; }
+					
+		 -->
+
+
+
+
+
+		<h3> positionnement absolue <h3>
+		<!--
+		
+			position: absolute;   /*le point d origine 0,0 (haut,gauche) est soit BODY soit le premier bloc PARENT positionné en fixed ou relative ou absolute */
+			
+			width: 960px;   /* Pour positionner et dimensionner un elemnt il FAUT qu'il ait une largeur */ 
+			
+			/* top: XX */
+			/* bottom: XX */
+			/* left: XX */
+			/* right: XX */
+
+			.class456 { position:absolute; top: 100px; right: 100px; width:700px; }
+					
+		 -->
+
+
+
+
+
+		<h3> positionnement relatif <h3>
+		<!--
+		 
+			position: relative; /* décalage par rapport au positionnement normal (static) */
+			
+			width: 960px;   /* Pour positionner et dimensionner un elemnt il faut qu'il ait une largeur */ 
+			
+			/* top: XX */
+			/* bottom: XX */
+			/* left: XX */
+			/* right: XX */
+
+			.class789 { position:relative; top: 10px; right: 10px; width:70px; }
+					
+		 -->
+
+
+
+
+
+		<h3> positionnement float et clear <h3>
+		<!--
+
+			float: right;  /* Flottant comme un glaçon */
+			clear: both;   /* interdit d'autre element flottant à droit et/ou à gauche */
+
+			/* width : largeur d'un block. height : hauteur d'un block.  */ 
+			
+			width: 960px;   /* Pour positionner et dimensionner un elemnt il faut qu'il ait une largeur */ 
+			height: 60%;
+			
+		 -->
+
+
+
+
+		<h3> positionnement de BLOC pour un GABARIT <h3>
+		<!--
+			body {margin:0; padding:0px;} 
+			
+			header, hgroup, nav, section, article, aside, footer, div {border:5px; display:block;}
+			
+			#contenu { width:960px; margin: 0 auto; background-color: LightCyan; }
+			
+			/* ou :
+				#main { width:960px; margin: 0 auto; background-color: LightCyan; }
+				#wrapper { width:960px; margin: 0 auto; background-color: LightCyan; }
+				#global { width:960px; margin: 0 auto; background-color: LightCyan; }
+				#contener { width:960px; margin: 0 auto; background-color: LightCyan; }
+				#content { width:960px; margin: 0 auto; background-color: LightCyan; }
+			*/
+			
+			header {width:950px; margin: 0 auto; padding:0px; background-color: red;}
+			menu   {width:750px; margin: 0 auto; padding:0px;background-color: blue;}
+			h1, p  {margin:0 10px; padding:0px; background-color: green;} 
+			
+			aside   {width:150px; margin:10px;  float:left;background-color: yellow;}
+			section {width:700px; margin:20px 150px 0 0; background-color: brown;}
+			
+			#IDdiv {width:700px; margin:20px 150px 0 0; background-color: orange;}
+			.CLASSdiv1 {width:700px; margin:20px 150px 0 0; background-color: grey;}
+			.CLASSdiv2 {width:700px; margin:20px 150px 0 0; background-color: olive;}
+			
+			footer   {width:950px; margin: 0 auto; padding:0px;background-color: pink;}
+			footer p {width:300px; margin: 20px auto 0 auto; background-color: purple;}
+		 -->
+
+
+
+
+
+		<h3> propriétés de style CSS pour les SPRITES ou FontIcone<h3>
+		<!--
+			Il s’agit de rassembler toutes vos petites images en une seule grosse et ,via la propriété background-position en css, de cibler l’image qui vous intéresse dans cet agglomérat d’images.
+			Cela permet de faire qu’une requête vers l’image au lieu de plusiers et d' améliore le temps de chargement de vos pages
+			
+			/*
+			#id1 {
+				background-image: url('./xxxx.jpg');
+				background-repeat: no-repeat ou repeat;;
+				background-position: xxxx px  xxxx px;
+				background-size: xxxx px  xxxx px;
+				padding: x px x px x px x px;
+			}
+			*/
+			
+						
+			#pos1-logo { 
+				width: 171px; height: 65px; 
+				float: left;
+				background-image: url('./google.jpg');
+				background-repeat: no-repeat;  
+				background-position: left -60px; 
+				/*background-color:red;*/
+			} 
+			
+			
+			#pos2-bouton { 
+				width: 32px; height: 35px; 
+				background-image: url('./google.jpg');
+				background-repeat: no-repeat;  
+				background-position: 0px -195px; 
+				/*background-color:yellow;*/
+			} 
+			
+			
+			.pos3-puce1 li {
+				background-image: url('./google.jpg');
+				background-repeat: no-repeat;
+				background-position: -227px -345px;
+				padding-left: 20px;
+				/*background-color:yellow;*/
+			}
+			
+			
+			.pos3-puce2 li {
+				background-image: url('./google.jpg');
+				background-repeat: no-repeat;
+				background-position: -150px -150px;
+				background-size: 150px 150px;
+				padding-left: 20px;
+				/*background-color:yellow;*/
+			}
+
+
+		 -->
+
+
+
+
+
+		<h3> Style CSS pour faire un menu déroulant <h3>
+		<!--
+		
+			#menu ul { margin:0px; padding:0px; background-color:#05a; }                                                     /* Lien non visité */
+			#menu ul li { float:left; list-style-type:none; margin-right:10px; background-color:#55a; }                      /* Lien non visité */
+			#menu ul li a { color:#FF0000; text-decoration:none; display:block; width:100px; background-color:#a5a; }        /* Lien non visité */
+			#menu ul li a:hover { color:#FF00FF; text-decoration:underline; background-color:#0aa; }                         /* Lien survolé */
+			#menu ul li ul { display:none; background-color:#05a; } 
+			#menu ul li:hover ul { display:block; margin:0px; padding:0px; background-color:#0fa; } 
+			#menu ul li:hover ul li { float:none; background-color:#05f; } 
+			
+		 -->
+
+
+
+
+
+		<h3> Logiciels de sprites <h3>
+		<!--
+			
+			http://fr.spritegen.website-performance.org
+			http://www.floweringmind.com/sprite-creator/
+			http://draeton.github.io/stitches/
+			http://www.spritebox.net
+			http://spritecss.outils-webmaster.com
+			http://flag-sprites.com
+			
+			SpriteGenerator - spritegenerator.codeplex.com
+			Sprite Builder 1 - SpriteBuilder.com
+			Game Maker 8 - Mark Overmars
+			The Games Factory 2 - Clickteam
+			Allegro Sprite Editor
+			TexturePacker 0.95
+			
+		 -->
+
+
+
+		<h3> Logiciels de Fonts Icones et Fonts -  Polices de caractères<h3>
+		<!--
+			
+			https://www.google.com/fonts/
+			https://edgewebfonts.adobe.com/
+			http://www.fontsquirrel.com/
+			http://www.dafont.com/
+			https://icomoon.io/
+			http://fontastic.me/
+			http://iconion.com/
+			http://weloveiconfonts.com/
+			http://fontello.com/
+			http://royaltutorial.com/ultimate-icon-package/
+			http://iconizer.net/
+			http://ConvertICO.org
+			http://favicon.ico
+			http://www.hypefortype.com/
+			
+			http://fontawesome.io
+
+
+
+
+
+		logiciel de polices de caractères: 
+		
+			Eudcedit intégré à Windows
+			DoubleType.exe
+			Cygwin - http://www.cygwin.com/
+			SkyFonts - Fonts.com de googlefont
+			FontForge
+			Fontmatrix
+			FontLab Studio
+			FontExpert 2013
+			Font Creator
+			Jype
+			Opcion Font Viewer
+			Polices de caractères
+			Font Wrangler
+			Fony
+			X-Fonter
+			FontPage
+			VFonts
+			Icon Viewer
+			andLinux - andLinux.org
+			iconion.exe
+			Seanau Icon Toolkit - http://www.seanau.com
+
+
+
+
+
+		 -->
+
+
+
+
+
+		<!--		 
+				 
+		/* coin arrondi sur tout un bloc.  */ 
+				.ClasseCoinArrondi{ 
+					-webkit-border-radius: 8px ;
+					-moz-border-radius: 8px ;
+					-khtml-border-radius: 8px ;
+					border-radius: 8px ;
+				}
+
+
+
+		/* coin arrondi sur tout un bloc.  */ 
+				.ClasseCoinArrondiHaut{ 
+					-moz-border-radius: 8px 8px 0 0 ;
+					-webkit-border-top-left-radius: 8px ;
+					-webkit-border-top-right-radius: 8px ;
+					-khtml-border-radius: 8px 8px 0 0 ;
+					border-radius: 8px 8px 0 0 ;
+				}
+
+
+
+		/* ombrage décalé vers le bas et la droite, diffus de 6px d'une couleur grise.  */
+				.ClasseOmbrage{ 
+					-moz-box-shadow: 10px 10px 5px #444 ;
+					-webkit-box-shadow: 10px 10px 5px #444 ;
+					-khtml-box-shadow: 10px 10px 5px #444 ;
+					box-shadow: 10px 10px 5px #444 ;
+				}
+
+
+
+		/* rotation d'un bloc.  */
+				.ClasseRotation{ 
+					-moz-transform-origin: 50% 50%;
+					-moz-transform: scale(1.00) rotate(-5deg) ;
+					-webkit-transform-origin: 50% 50%;
+					-webkit-transform: scale(1.00) rotate(-5deg) ;
+					transform-origin: 50% 50%;
+					transform: scale(1.00) rotate(-5deg) ;
+				}
+
+
+
+
+
+		/* affichage en colonnes */
+				.column3
+					{
+					-moz-column-count:3; /* Firefox */
+					-webkit-column-count:3; /* Safari and Chrome */
+					-o-column-count:3; /* Opera mais ne marche pas encore */
+					column-count:3;
+				}
+
+
+
+
+
+		/* creation d'un dégradé de couleur */
+				.ClasseDegrade { 
+					/* exemple : background-image: linear-gradient( <angle>, couleur1, couleur2 );	*/					
+					background-image: -webkit-linear-gradient(70deg, red 10%, orange 30%, yellow 70%, red 90%);
+					background-image: -moz-linear-gradient(70deg, red 10%, orange 30%, yellow 70%, red 90%);
+					background-image: -ms-linear-gradient(70deg, red 10%, orange 30%, yellow 70%, red 90%);
+					background-image: -o-linear-gradient(70deg, red 10%, orange 30%, yellow 70%, red 90%);
+					background-image: linear-gradient(70deg, red 10%, orange 30%, yellow 70%, red 90%);
+				}
+
+
+
+
+
+		/* gestion du depassement de contenu */
+				.overflow2
+				{
+					width:12em; 
+					white-space:nowrap; 
+					border:1px solid #000000;
+
+					overflow:hidden; 
+					-moz-text-overflow:ellipsis; 
+					-webkit-text-overflow:ellipsis;
+					-o-text-overflow:ellipsis; 
+					text-overflow:ellipsis; 
+				}
+
+
+
+
+
+		/* transformation ou interpolation */
+				.ClasseTransform { 
+					-webkit-transform:  translate(50px,100px);
+					-moz-transform:  translate(50px,100px);
+					-ms-transform:  translate(50px,100px);
+					-o-transform:  translate(50px,100px);
+					transform:  translate(50px,100px);
+				}
+
+
+
+
+
+		/* transition */
+				.ClasseTransition { 
+					background:red;
+					transition:width 2s, height 2s;
+					-moz-transition:width 2s, height 2s, -moz-transform 2s; /* Firefox 4 */
+					-webkit-transition:width 2s, height 2s, -webkit-transform 2s; /* Safari and Chrome */
+					-o-transition:width 2s, height 2s, -o-transform 2s; /* Opera */	
+				}
+
+
+
+
+
+		/* transformation ou interpolation */
+				.ClasseTransition:hover { 
+					-webkit-transform: rotate(30deg);
+					-moz-transform: rotate(30deg);
+					-ms-transform: rotate(30deg);
+					-o-transform: rotate(30deg);
+					transform: rotate(30deg);
+				}
+
+
+
+
+
+		/* animation */
+				.ClasseAnimation{
+					width:100px;
+					height:100px;
+					background:red;
+					position: relative;
+					
+					/* 
+					animation: myfirst 5s infinite;
+					-moz-animation: myfirst 5s infinite; 
+					-webkit-animation: myfirst 5s infinite; 
+					-o-animation: myfirst 5s infinite; 
+					*/
+
+					animation-name: myfirst;
+					animation-duration: 5s;
+					animation-timing-function: ease;
+					animation-delay: 2s;
+					animation-iteration-count: infinite;
+					animation-direction: alternate;
+					animation-play-state: running;
+					/* Firefox: */
+					-moz-animation-name: myfirst;
+					-moz-animation-duration: 5s;
+					-moz-animation-timing-function: ease;
+					-moz-animation-delay: 2s;
+					-moz-animation-iteration-count: infinite;
+					-moz-animation-direction: alternate;
+					-moz-animation-play-state: running;
+					/* Safari and Chrome: */
+					-webkit-animation-name: myfirst;
+					-webkit-animation-duration: 5s;
+					-webkit-animation-timing-function: ease;
+					-webkit-animation-delay: 2s;
+					-webkit-animation-iteration-count: infinite;
+					-webkit-animation-direction: alternate;
+					-webkit-animation-play-state: running;
+					/* Opera: */
+					-o-animation-name: myfirst;
+					-o-animation-duration: 5s;
+					-o-animation-timing-function: ease;
+					-o-animation-delay: 2s;
+					-o-animation-iteration-count: infinite;
+					-o-animation-direction: alternate;
+					-o-animation-play-state: running;
+
+				}
+
+
+
+
+
+				@keyframes myfirst
+				{
+					0%   {background: red; left:0px; top:0px;}
+					25%  {background: yellow; left:200px; top:0px;}
+					50%  {background: blue; left:200px; top:200px;}
+					75%  {background: green; left:0px; top:200px;}
+					100% {background: red; left:0px; top:0px;}
+				}
+
+				@-moz-keyframes myfirst /* Firefox */
+				{
+					0%   {background: red; left:0px; top:0px;}
+					25%  {background: yellow; left:200px; top:0px;}
+					50%  {background: blue; left:200px; top:200px;}
+					75%  {background: green; left:0px; top:200px;}
+					100% {background: red; left:0px; top:0px;}
+				}
+
+				@-webkit-keyframes myfirst /* Safari and Chrome */
+				{
+					0%   {background: red; left:0px; top:0px;}
+					25%  {background: yellow; left:200px; top:0px;}
+					50%  {background: blue; left:200px; top:200px;}
+					75%  {background: green; left:0px; top:200px;}
+					100% {background: red; left:0px; top:0px;}
+				}
+
+				@-o-keyframes myfirst /* Opera */
+				{
+					0%   {background: red; left:0px; top:0px;}
+					25%  {background: yellow; left:200px; top:0px;}
+					50%  {background: blue; left:200px; top:200px;}
+					75%  {background: green; left:0px; top:200px;}
+					100% {background: red; left:0px; top:0px;}
+				}
+
+
+
+
+
+		/* réglage de la page en mode portrait ou paysage */
+				.ClasseReglagePage1{
+
+					/* size : réglage de la page d'impression.  */ 
+					size: auto ;
+					size: portrait ;
+					size: landscape ;
+
+
+					/* orphans : evite les lignes seules en début de page en indiquant le nombre minimum sur une page.  */ 
+					orphans: 3 ;
+
+
+					/* widows : evite les lignes seules en fin de page en indiquant le nombre minimum de ligne.  */ 
+					widows: 3 ;
+
+
+					/* page-break-before, page-break-after : force un saut de ligne avant ou après un objet.  */ 
+					page-break-after: auto ;
+					page-break-before: always ; /* saut de page à faire */
+					page-break-before: avoid ; /* saut de page à éviter */
+
+				}
+
+
+		-->
+
+
+
+
+		</body> 
+ </html> 

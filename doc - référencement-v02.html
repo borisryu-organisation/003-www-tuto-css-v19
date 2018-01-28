@@ -1,0 +1,668 @@
+
+/*****************************************************************************/
+
+								REFERENCEMENT
+							
+/*****************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+Exemple de code :
+
+
+
+<!DOCtype html>
+<html lang='fr-FR'>
+	<head>
+		<title> TITRE DU SITE </title>
+		<meta name="Description" content="Description du site " >
+		<meta charset="utf-8" >
+		<link type='text/css' rel='stylesheet' href='./fichier.css'>	
+
+	</head>	
+	<body>
+			<header> <h1> TITRE DE LA PAGE </h1>  </header>
+			<noscript> JAVASCRIPT est désactivé dans votre navigateur ! </noscript>
+			<nav> <a href="#">Lien1</a> | <a href="#">Lien2</a> | </nav>
+			<aside> <a href="#">Lien1</a> | <a href="#">Lien2</a> | </aside>
+			<main>
+				<section>
+					<article>
+						<header>  <h2> TITRE : ARTICLE </h2>  </header>
+						<p> Lorem Ipsum ... </p>
+						<footer>  <h3> Nom de l'auteur,  Date </h3>  </footer>
+					</article>
+				</section>
+			<footer> <p> PIED DE LA PAGE : ... </p> </footer>
+			<script type='text/javascript' src='./js/fichier.js'> </script> 	
+		</div>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+/*****************************************************************************/
+
+							Balise <title>
+							
+/*****************************************************************************/
+
+
+
+
+La section "head" des pages à référencer doit contenir une balise TITLE.
+Elle contient le titre de la page, jusqu'à 80 caractères. Cette balise est absolument obligatoire.
+
+    Utiliser pour le titre du site WEB
+    Utiliser comme lien clicable lors des resultats des moteurs de recherches
+    Utiliser comme titre des onglets du navigateur
+    Utiliser comme favoris, signets, marques pour les navigateurs
+	
+	On peut placer le nom de domaine du site pour la page d'accueil, mais il ne faut pas forcément le répéter sur les autres pages.
+    Le titre donne beaucoup d'information aux moteurs de recherche. Ne laissez pas votre page vide ou avec un "untitled" généré par l'éditeur 
+	Evitez une phrase neutre comme "Accueil" ou trop courte comme "La voiture"
+    Les titres doivent absolument être différents sur chaque page
+    Les titres doivent être des phrases et non des mot-clés
+    L'idéal est que le titre donne envie de lire la page
+
+	la balise meta title n'existe pas : <meta name="title" content="Un titre">
+
+
+
+
+
+
+
+
+
+/*****************************************************************************/
+
+							Balise <meta description=''>
+							
+/*****************************************************************************/
+
+
+La balise meta description est prise en compte par Google mais uniquement pour l'affichage des résultats.
+
+Le format des méta tags est le suivant:
+
+<meta name="" content="" >
+
+A name on assigne un nom: "description", "robots", et à content le texte ou les directives.
+
+DESCRIPTION
+
+Description de la page (ou du site). Google n'affiche que 160 caractères.
+La balise description est essentielle pour les pages ayant peu de contenu et surtout des images. Elle est utilisée par Google pour le texte des résultats, les snippets, comme l'indique cet article: Improve snippets with a meta description makeover. Elle doit fournir une description pertinente du contenu de la page et être propre à chaque page. Exemple:
+
+<meta name="description" content="Sujet de la page" > 
+
+ROBOTS
+
+Directives pour les moteurs de recherche, par défaut la valeur est "all":
+
+    index: la page sera indexée.
+    noindex: le contraire.
+    follow: les pages liées sont prises en compte.
+    nofollow: les liens sont ignorés par le moteur.
+    noarchive: la page n'est pas mise en cache mais néammoins indexée.
+    all: toutes options positives, la valeur par défaut si la balise est omise.
+    none: aucune option positive: noindex, nofollow, noarchive.
+    noodp: si le moteur de recherche affiche une description de votre site prise dans l'annuaire Dmoz et qu'elle ne vous convient pas, vous pouvez placer cette directive (ODP, Open Directory Project = Dmoz.org).
+
+FRAGMENT
+
+<meta name="fragment" content="!">
+
+Cette balise indique aux moteurs que c'est une page page Ajax et qu'il y a un contenu dynamique à indexer. (Voir section Ajax).
+
+Balises optionnelles
+
+Ces balises sont utiles sans être obligatoires.
+
+    AUTHOR: le nom de l'auteur.
+    REL="canonical": En cas de doublon, indique l'URL de la page à indexer.
+    REL="prev" et REL="next": En cas de pagination, il est important d'indiquer la page précédente et la page suivante pour un même article.
+
+Ces balises n'ont aucune utilité pour le référencement, elle peuvent servir à des outils spécialisés:
+
+    REVISIT-AFTER: ignorée par les moteurs et remplacée par les indications dans la sitemap XML.
+    KEYWORDS : mots-clés séparés par une virgule, jusqu'à 1000 caractères. N'est plus que rarement utilisé.
+
+Références et outils
+
+    La balise canonical a un script sur ce site.
+    Google donne une liste des meta-tags que l'on peut utiliser.
+    Voir aussi l'article of Google, meta tags and Web search.
+
+
+
+
+
+
+
+
+
+/*****************************************************************************/
+
+							Balise <meta keywords=''>
+							
+/*****************************************************************************/
+
+
+
+
+Elle n'est plus utilisée par Google, qui d'ailleurs ne la cite même pas dans son article...
+
+
+
+
+
+
+
+
+
+
+
+/*****************************************************************************/
+
+							Balise <meta name="robots" content="">
+
+/*****************************************************************************/
+
+
+Cette balise est prise en compte par Google (et les autres moteurs). Elle sert à définir des restrictions au robot qui vient crawler la page. Les principaux moteurs de recherche proposent également aux webmasters d'utiliser une balise spécifique (googlebot pour Google, slurp pour Yahoo, etc.) ; dans ces cas, les restrictions concernées ne s'appliquent qu'au moteur spécifié.
+
+Remarque : pour connaître tous les détails, lisez aussi mon tuto sur la balise meta robots.
+
+Voici les différentes valeurs possibles pour la balise meta robots, et leurs significations :
+
+    noindex : indique au robot qu'il ne faut pas indexer la page. Cela ne signifie pas que le robot ne va pas la crawler : pour cela il faut utiliser le fichier robots.txt
+    nofollow : indique au robot qu'il ne faut pas suivre les liens dans la page. Cela signifie que Google n'ira pas crawler les pages liées par la page contenant cette balise meta robots. Même si Google ne le précise pas dans son article, les moteurs ne tiendront pas non plus compte des liens présents sur la page dans leur algorithme (par exemple celui du PageRank).
+    index : indique au robot qu'il peut indexer la page. Cette valeur étant celle par défaut, il est totalement inutile de l'indiquer.
+    follow : indique au robot qu'il peut suivre les liens dans la page. Cette valeur étant celle par défaut, il est totalement inutile de l'indiquer.
+    all : cette valeur est l'équivalent de index,follow. Cette valeur étant celle par défaut, il est totalement inutile de l'indiquer.
+    none : cette valeur est l'équivalent de noindex,nofollow.
+    nosnippet : indique au robot qu'il ne faut pas afficher de descriptif (snippet) dans la page de résultats. J'ai du mal à voir l'intérêt pour un webmaster d'utiliser cette possibilité puisque ce descriptif permet d'inciter l'internaute à cliquer sur le résultat (peut-être qu'il existe des cas où le descriptif créé par le moteur n'est pas assez pertinent aux yeux du webmaster).
+    noarchive : indique au robot qu'il ne faut pas laisser l'accès à la version en cache. Le lien "En cache" dans la page de résultats ne sera donc pas affiché. Ceci peut servir à ceux qui passent leurs contenu d'une version publique accessible à une version archivée payante (sites de journaux par exemple).
+    nocache : identique à noarchive, ceci est pris en compte par Bing mais pas par Google
+    noodp : indique au robot qu'il ne faut pas utiliser les données associées au site par les éditeurs de l'annuaire DMOZ (Open Directory Project, ODP). Ceci est utile si la description ou le titre du site dans DMOZ ne correspondent pas assez bien à la réalité. Pour en savoir plus lire l'article sur la balise meta noodp.
+    unavailable_after:[date] : indique au robot que la page ne doit pas ressortir dans les résultats après la date indiquée. Pour en savoir plus lire la discussion sur la balise meta unavailable_after
+
+Yahoo gère également la valeur noydir qui permet comme noodp d'indiquer au moteur qu'on ne souhaite pas que les données de l'annuaire Yahoo (Yahoo Directory) soient utilisées. Pour en savoir plus lire l'article sur la balise meta noydir.
+
+Il est possible de combiner plusieurs valeurs au sein d'une seule balise meta robots : il suffit pour cela de séparer les valeurs par des virgules, comme par exemple :
+
+<meta name="robots" content="noodp,noydir">
+
+
+
+
+
+
+
+
+
+
+
+/*****************************************************************************/
+
+/*****************************************************************************/
+
+Liens et liens retours
+
+Le format des liens internes et externes est important parce qu'il est utilisé par les moteurs pour mieux comprendre le but d'une page et parce que les utilisateurs peuvent reprendre le lien et l'ancre tel quel pour leurs propre pages. Google recommande de créer un format unique pour tous les liens internes sur la même page. L'ancre doit être similaire au titre de cette page.
+Quand au nom de fichier, il est préférable qu'il soit unique, même si on pourrait utiliser le même nom dans des répertoires différents, et tout en miniscules.
+
+Liens internes
+
+Il est déconseillé de sur-optimiser les ancres, autrement dit, multiplier les liens vers une page en placer systématiquement un ensemble de mots-clés dans l'ancre. Idéalement l'ancre doit correspondre au titre de la page. 
+
+Obtenir des liens
+
+Les liens retour sont essentiels pour classer les pages dans les résultats, car ils témoignent de la popularité du site. Les liens venant de sites importants et populaires ont bien sur plus de valeur.
+Google donne un moyen d'accroître sa popularité et aussi d'ajouter des liens vers son propre site: créer un blog pour parler de ses produits. Wordpress est un bon outil pour créer son blog.
+Pour avoir une valeur significative, les liens doivent venir de sources différentes et indépendantes du site, donc de propriétaires différents. Les textes qui font référence au site sans balise de lien sont pris en compte par l'algorithme Panda.
+
+Les répertoires
+
+C'est une solution de rechange lors le démarrage d'un site. Mais si après un temps il n'a que des backlinks auto-soumis, cela n'aura aucun effet positif. Pour soumettre un site sur Dmoz, il faut trouver la catégorie exacte du site dans l'arborescence du répertoire. La soumission donne lieu à examen avant acceptation, le site doit avoir certaines qualités:
+
+    Site prêt pour les utilisateurs et non en cours de construction.
+    Contenu substantiel, et en texte (pas en flash ou en images).
+    Le site ne doit pas être soumis sous plusieurs noms de domaine différents avec redirections.
+    Le contenu doit être unique. Le "duplicate content" est interdit par les moteurs de recherche.
+
+Le délai d'acceptation après soumission dans Dmoz est variable et peut dépasser un mois.
+
+Les annuaires
+
+Pour savoir quel sont les annuaires qui apporteront le plus de visiteurs, faites une requête sur les moteurs de recherche avec deux ou trois mots-clés: ceux qui caractérisent le mieux votre site + le mot annuaire.
+Considérez les premières pages de résultats. Evitez les annuaires qui n'y apparaissent pas.
+
+Une campagne de référencement (d'un autre site) dans le passé sur cette sélection d'annuaires généralistes, censés avoir réellement des visiteurs, a donné les résultats suivants: environ 500 backlinks supplémentaires (bien qu'il n'y ait qu'une cinquantaine d'annuaires) et une infime amélioration du trafic. Une bonne partie des liens a disparu avec le temps. C'est une expérience à ne pas reproduire de nos jours.
+
+Erreur à éviter
+
+L'inscription à une multitude d'annuaires pour améliorer le ranking peut créer une augmentation soudaine du nombre de liens vers le site mais c'est sans lendemain. Les grands répertoires tels que dmoz.org ont au contraire un effet durable. Eviter aussi la même description sur plusieurs annuaires. 
+
+
+
+
+
+
+
+
+
+
+/*****************************************************************************/
+
+Robot.txt
+
+/*****************************************************************************/
+
+Le protocole d'exclusion des robots est une ressource de format texte qui peut être placée à la racine d'un site web, et qui contient une liste des ressources du site qui ne sont pas censées être indexées par les robots d'indexation des moteurs de recherche. 
+
+L'usage de robots.txt permet d'éviter que des ressources sans intérêt public se retrouvent dans la page de résultats d'un moteur de recherche. 
+
+Il est important de comprendre qu’il ne s’agit là que d’une indication sur ce que doivent faire les robots bienveillants, ce n’est en aucun cas un élément de sécurité.
+
+
+
+
+Exemples
+
+Autoriser tous les robots à accéder au site  :
+
+User-agent: *
+Disallow:
+
+
+
+Interdire l'accès au site à tous les robots  :
+
+User-agent: *
+Disallow: /
+
+
+
+Interdire l'accès à la partie administratif du site à tous les robots  :
+
+User-agent: *
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/
+Allow: /wp-content/uploads/
+
+ou
+
+User-agent: *
+Disallow: /wp-*
+Allow: /wp-content/uploads/
+
+
+
+Pour interdire à tous les robots, sauf Googlebot, 
+l'accès à un dossier en particulier, par exemple http://www.domaine1.com/forum/
+
+User-agent: *
+Disallow: /forum
+
+User-agent: googlebot
+Disallow:
+
+
+
+
+
+
+
+
+/*****************************************************************************/
+
+Sitemap.xml
+
+/*****************************************************************************/
+
+Le protocole Sitemaps permet à un webmestre d'informer les moteurs de recherche quelles adresses d'un site web sont disponibles pour l'indexation automatique.
+
+Il s'agit d'un plan de site (« sitemap ») compréhensible par les robots d'indexation, rédigé sous forme d'un fichier XML ou texte qui répertorie les URL d'un site permettant ainsi d'inclure des informations complémentaires sur chaque adresse, comme sa date de dernière modification, la fréquence de mise à jour et son importance par rapport aux autres adresses du site.
+
+Cela permet donc aux moteurs de recherche d'explorer le site plus intelligemment.
+
+Le format de fichier texte est une simple liste des pages avec une URL complète, protocole "http://" (ou "https://") inclus. Le fichier XML standard comporte outre l'URL :
+
+    une périodicité indicative pour les mises à jour de la page (de hourly à yearly),
+    la date de dernière mise à jour,
+    l'importance relative de la page par rapport aux autres pages du site.
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://www.example.net/?id=who</loc>
+    <lastmod>2009-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.example.net/?id=what</loc>
+    <lastmod>2009-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.example.net/?id=how</loc>
+    <lastmod>2009-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>
+
+
+
+outils :
+
+https://www.xml-sitemaps.com/
+
+Baidu 	http://zhanzhang.baidu.com/dashboard/index 	Baidu Webmaster Dashboard 	China,Hong Kong,Singapore
+Bing (and Yahoo!) 	http://www.bing.com/webmaster/ping.aspx?siteMap= 	Bing Webmaster Tools 	Global
+Google 	http://www.google.com/webmasters/tools/ping?sitemap= 	Submitting a Sitemap 	Global
+Yandex 	http://webmaster.yandex.com/site/map.xml 	Sitemaps files 	Russia,Ukraine,Belarus,Kazahkstan,Turkey
+
+
+
+/*****************************************************************************/
+
+.htacces
+
+/*****************************************************************************/
+
+Réécriture d'URL
+
+
+
+Redirection de pages
+
+
+
+La sécurisation d'un répertoire
+
+AuthUserFile /var/www/.htpasswd
+AuthGroupFile /var/www/.htgroup
+AuthName "Visiteur, vous pénétrez dans une section réservée aux membres, veuillez vous identifier"
+AuthType Basic
+require group Membres Admin
+
+
+
+La gestion des pages d'erreurs
+
+ErrorDocument 401 /erreur401.html
+ErrorDocument 403 /erreur403.html
+ErrorDocument 404 /erreur404.html
+ErrorDocument 414 /erreur414.html
+
+
+
+
+
+
+
+
+/*****************************************************************************/
+
+.htpsswrd
+
+/*****************************************************************************/
+
+crypt()
+
+afsanat:$apr1$TVFhC/..$rRph2WN9n1DeW6Cs89So2.
+noemie:$apr1$vAVyg…$HXoAN3bh.Ff6hxXKopIFpE1
+kyle:$apr1$7ALHn/..$aV8IuW3jqdQWaStyX2Izg.
+davin:$apr1$2o89Z/..$SVDHl7FK4A0w8le.cq1Z1
+
+
+
+
+
+
+
+
+
+/*****************************************************************************/
+
+.htgroup
+
+/*****************************************************************************/
+
+
+Membres:kyle davin noemie
+Admin:afsanat noemie
+
+
+
+
+
+
+
+
+
+/*****************************************************************************/
+http://www.google.fr/adwords
+/*****************************************************************************/
+
+
+http://www.google.fr/adwords
+
+Outil de planification des mots clés
+
+(anciennement "Google Keyword Tool")
+
+https://adwords.google.com/ko/KeywordPlanner/Home
+
+Cet outil est indispensable pour trouver les mots-clés les plus recherchés par les internautes dans votre domaine, y compris dans des niches et pour des périmètres géographiques limités. Il permet également de comparer le volume de recherche sur des synonymes (afin d'utiliser les mots les plus recherchés dans votre texte).
+
+Vérifier si vos mots-clés sont recherchés
+
+Un de mes clients fait du "diagnostic de béton" et avait optimisé tout son site sur ce mot-clé. Pas de chance, ses clients potentiels cherchent "réparation du béton" ou "fissure dans le béton".
+
+Google Keyword tool est un outil proposé gratuitement par Google Adwords. Il permet de comparer plusieurs mots-clé pour savoir celui qui est le plus recherché, dans un périmètre géographique donné
+
+
+
+
+
+
+
+
+
+/*****************************************************************************/
+http://www.google.fr/adsense
+/*****************************************************************************/
+
+AdSense est la régie publicitaire de Google utilisant les sites web ou les vidéos YouTube comme support pour ses annonces. Pour qu'un webmestre devienne partenaire d'Adsense et génère des revenus publicitaires pour son propre compte, il doit publier du contenu sur son propre site et y faire figurer le code Adsense fourni par Google.
+
+Par opposition à Google AdWords qui permet d'acheter du trafic, Adsense permet de vendre du trafic. Ces deux programmes sont complémentaires et la valeur unitaire d'un clic sur une annonce est déterminé sur la base de l'offre de trafic (Adsense) et de la demande de trafic (Adwords).
+
+L'utilisateur Adsense pourra aussi publier du contenu sur sa chaîne YouTube et souscrire au programme Adsense pour générer l'impression de messages publicitaires dont il partagera le bénéfice avec Google.
+
+Les annonces sont le plus souvent contextuelles, mais plusieurs formules sont offertes, et aussi plusieurs types d'annonces incluant les parrainages de produits Google et le champ de recherche. Les annonces sont des textes, des images ou des vidéos.
+
+
+
+
+
+
+
+
+
+
+
+
+/*****************************************************************************/
+www.google.com/analytics/
+/*****************************************************************************/
+
+Google Analytics
+
+Google Analytics est un service gratuit d'analyse d'audience d'un site Web ou d'applications
+
+http://google.com/analytics
+
+Dans votre compte Google Analytics, allez dans Sources de trafic > Sources > Vue d'ensemble
+Ensuite dans Sources de trafic > Sources > Recherche > Résultats naturels (pour voir les mots-clés).
+
+Les bonnes questions à se poser :
+
+    Quelle est la part de visiteurs venant des moteurs de recherches (via la recherche naturelle) ?
+    Les mots-clé utilisés pour arriver sur le site sont-ils pertinents ?
+    Combien de recherches sur mon nom / ma marque ? (à enlever des résultats "naturels")
+    A-t'on un grand nombre de mots-clé différents ? (longue traine)
+
+
+
+
+
+
+
+
+
+/*****************************************************************************/
+https://www.google.com/trends/
+/*****************************************************************************/
+
+Google Trends
+
+http://www.google.com/trends/
+
+Cet outil est le plus simple pour comparer des mots-clés et trouver ceux qui sont les plus recherchés par les internautes. Il indique également les tendances de recherche sur un mot-clé depuis 2006.
+
+Google Trends ou Google Tendances des recherches est un outil issu de Google Labs permettant de connaître la fréquence à laquelle un terme a été tapé dans le moteur de recherche Google, avec la possibilité de visualiser ces données par région et par langue.
+
+
+
+
+
+
+
+
+/*****************************************************************************/
+https://www.google.com/webmasters (search console)
+/*****************************************************************************/
+
+Google Webmaster Tools
+
+http://www.google.com/webmasters
+
+Outil permettant, après authentification du site, de disposer d'informations très utiles pour :
+- aider Google à indexer son site (sitemap en XML, rich snippets, URL favorite,…)
+- comprendre les facteurs influençant le positionnement de son site dans Google (liens entrants notamment)
+- voir les éventuels problèmes sur votre site (des titres en double aux logiciels malveillants en passant par la lenteur de chargement).
+
+
+
+Soumettre son site à Google
+
+Vérifiez d'abord si votre site est déjà indexé au moyen de la requête site:www.monsite.com dans la barre de recherche. Aucun résultat ? Soumettez votre site sans attendre.
+https://www.google.com/webmasters/tools/submit-url?hl=fr 
+(il est nécessaire de se connecter à son compte Google)
+
+
+
+Voir les liens entrants vers votre site
+
+Google Webmaster tools est (encore !) un outil de Google, qui permet d'analyser votre site sous toutes les coutures. Pour cet audit rapide de votre référencement, allez directement dans la fonction "Votre site sur le Web > Liens vers votre site".
+
+Les questions à se poser :
+    Combien de liens pointent vers mon site ?
+    Y a-t-il des liens vers des pages internes ? (tableau de droite)
+    Quel est le libellé des liens qui pointent vers moi ? (tableau en-dessous)
+
+
+
+
+
+
+
+
+
+
+/*****************************************************************************/
+outils
+/*****************************************************************************/
+
+
+Tester le temps de chargement de ses pages
+
+http://www.internetvista.com/fr/test-disponibilite-site-web-en-direct.htm
+
+Google a toujours voulu fournir à ses utilisateurs la meilleure expérience possible. Ses résultats de recherche s'affichent quasi instantanément. Mais Google attend aussi de votre site qu'il s'ouvre (très) rapidement.
+
+InternetVista propose un outil de monitoring qui teste non seulement la disponibilité de votre site mais aussi son temps de réponse.
+
+
+
+outil qui ferait tout pour moi ?
+
+https://www.woorank.com/fr
+
+Je garde le meilleur pour la fin... L'outil d'analyse Woorank, proposé gratuitement par Jean Derely, m'a réellement "bluffée", non seulement par la qualité de son analyse, mais aussi par son côté très didactique.
+
+Woorank
+
+Evidemment que les outils présentés ci-dessus sont plus précis et fiables, mais cet outil vous donne en un clin d'oeil une vision globale des points à améliorer.
+
+
+
+Google Places for Business
+
+(anciennement "Google Local Business Center" ou "Google Adresses")
+
+http://www.google.com/business/placesforbusiness/
+
+Cet outil vous permet d'ajouter votre établissement dans les résultats cartographiques fournis par Google, ce qui vous donne une belle visibilité dans les résultats du moteur.
+Mode d'emploi détaillé pour figurer dans les cartes Google.
+
+
+
+
+Créer une page d'entreprise sur Google+
+
+http://plus.google.com/pages
+
+Voici un mode d'emploi pour créer votre page Google+. Et si vous doutez encore de l'intérêt du réseau social de Google pour votre référencement, voici un exemple de résultats où toute la partie droite de l'écran affiche le contenu (page et actualités) issu de Google+. Un fameux gain de visibilité !
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
